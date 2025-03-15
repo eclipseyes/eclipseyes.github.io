@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我 - 我的个人网站</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* 联系页面特定样式 */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      padding: 80px 0;
+    }
+    
+    .contact-info {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .contact-info h3 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .contact-info p {
+      margin-bottom: 15px;
+    }
+    
+    .contact-info .info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .contact-info .info-item i {
+      width: 30px;
+      color: #007bff;
+      font-size: 1.2rem;
+    }
+    
+    .contact-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .contact-form h3 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+    
+    .submit-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">我的网站</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="about.html">关于我</a></li>
+          <li><a href="projects.html">项目展示</a></li>
+          <li><a href="blog.html">博客</a></li>
+          <li><a href="contact.html" class="active">联系方式</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h2>联系我</h2>
+    </div>
+  </section>
+
+  <section class="container contact-container">
+    <div class="contact-info">
+      <h3>联系信息</h3>
+      <p>如果您有任何问题或合作意向，请随时通过以下方式联系我。</p>
+      
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <span>email@example.com</span>
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-phone"></i>
+        <span>+86 123 4567 8910</span>
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>北京市，中国</span>
+      </div>
+      
+      <h3>社交媒体</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-weixin"></i></a>
+      </div>
+    </div>
+    
+    <div class="contact-form">
+      <h3>发送消息</h3>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">姓名</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">邮箱</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">主题</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">消息</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">发送消息</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>关于</h3>
+          <p>个人网站展示我的技能、项目和经验。</p>
+        </div>
+        <div class="footer-section">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">关于我</a></li>
+            <li><a href="projects.html">项目</a></li>
+            <li><a href="contact.html">联系我</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>联系方式</h3>
+          <p><i class="fas fa-envelope"></i> email@example.com</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 我的个人网站. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // 表单提交处理
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // 获取表单数据
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // 这里可以添加表单验证逻辑
+      
+      // 在实际应用中，您会将数据发送到服务器
+      // 这里我们只是显示一个成功消息
+      alert(`感谢您的留言，${name}！我会尽快回复您。`);
+      
+      // 重置表单
+      this.reset();
+    });
+  </script>
+</body>
+</html>

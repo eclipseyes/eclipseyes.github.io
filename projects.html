@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目展示 - 我的个人网站</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">我的网站</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="about.html">关于我</a></li>
+          <li><a href="projects.html" class="active">项目展示</a></li>
+          <li><a href="blog.html">博客</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h2>项目展示</h2>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <div class="container">
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="web">网站开发</button>
+        <button class="filter-btn" data-filter="mobile">移动应用</button>
+        <button class="filter-btn" data-filter="other">其他项目</button>
+      </div>
+      
+      <div class="projects-grid">
+        <div class="project-card" data-category="web" id="project1">
+          <img src="images/project1.jpg" alt="项目1">
+          <h3>响应式网站设计</h3>
+          <p>使用HTML5、CSS3和JavaScript开发的响应式网站，适配各种设备屏幕。</p>
+          <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <a href="#" class="btn-small">查看详情</a>
+        </div>
+        
+        <div class="project-card" data-category="mobile" id="project2">
+          <img src="images/project2.jpg" alt="项目2">
+          <h3>移动应用开发</h3>
+          <p>使用React Native开发的跨平台移动应用，支持iOS和Android系统。</p>
+          <div class="project-tags">
+            <span>React Native</span>
+            <span>JavaScript</span>
+            <span>移动开发</span>
+          </div>
+          <a href="#" class="btn-small">查看详情</a>
+        </div>
+        
+        <div class="project-card" data-category="web">
+          <img src="images/project3.jpg" alt="项目3">
+          <h3>电子商务网站</h3>
+          <p>基于React和Node.js开发的完整电子商务解决方案，包括支付集成。</p>
+          <div class="project-tags">
+            <span>React</span>
+            <span>Node.js</span>
+            <span>MongoDB</span>
+          </div>
+          <a href="#" class="btn-small">查看详情</a>
+        </div>
+        
+        <div class="project-card" data-category="other">
+          <img src="images/project4.jpg" alt="项目4">
+          <h3>数据可视化工具</h3>
+          <p>使用D3.js开发的数据可视化工具，帮助用户理解复杂数据集。</p>
+          <div class="project-tags">
+            <span>D3.js</span>
+            <span>JavaScript</span>
+            <span>数据可视化</span>
+          </div>
+          <a href="#" class="btn-small">查看详情</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>关于</h3>
+          <p>个人网站展示我的技能、项目和经验。</p>
+        </div>
+        <div class="footer-section">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">关于我</a></li>
+            <li><a href="projects.html">项目</a></li>
+            <li><a href="contact.html">联系我</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>联系方式</h3>
+          <p><i class="fas fa-envelope"></i> email@example.com</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 我的个人网站. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // 项目筛选功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 移除所有按钮的active类
+          filterBtns.forEach(btn => btn.classList.remove('active'));
+          // 给当前点击的按钮添加active类
+          this.classList.add('active');
+          
+          const filter = this.getAttribute('data-filter');
+          
+          projectCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

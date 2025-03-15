@@ -1,1 +1,108 @@
-Hello World
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的个人网站</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">我的网站</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">首页</a></li>
+          <li><a href="about.html">关于我</a></li>
+          <li><a href="projects.html">项目展示</a></li>
+          <li><a href="blog.html">博客</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>欢迎来到我的个人网站</h2>
+      <p>这里展示我的项目、技能和经验</p>
+      <a href="about.html" class="btn">了解更多</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="feature-box">
+        <i class="fas fa-code"></i>
+        <h3>网站开发</h3>
+        <p>使用现代技术栈创建响应式网站</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>移动应用</h3>
+        <p>开发跨平台移动应用程序</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-server"></i>
+        <h3>后端开发</h3>
+        <p>构建可靠的服务器端应用</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="recent-projects">
+    <div class="container">
+      <h2>最新项目</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="images/project1.jpg" alt="项目1">
+          <h3>项目名称1</h3>
+          <p>项目简短描述，介绍主要功能和技术。</p>
+          <a href="projects.html#project1" class="btn-small">查看详情</a>
+        </div>
+        <div class="project-card">
+          <img src="images/project2.jpg" alt="项目2">
+          <h3>项目名称2</h3>
+          <p>项目简短描述，介绍主要功能和技术。</p>
+          <a href="projects.html#project2" class="btn-small">查看详情</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>关于</h3>
+          <p>个人网站展示我的技能、项目和经验。</p>
+        </div>
+        <div class="footer-section">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">关于我</a></li>
+            <li><a href="projects.html">项目</a></li>
+            <li><a href="contact.html">联系我</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>联系方式</h3>
+          <p><i class="fas fa-envelope"></i> email@example.com</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 我的个人网站. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
