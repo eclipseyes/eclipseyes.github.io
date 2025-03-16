@@ -1,3 +1,12 @@
+/* 新增在文件开头 */
+:root {
+  --primary: #A8D8EA;  /* 马卡龙蓝 */
+  --secondary: #FF9A8B; /* 马卡龙粉 */
+  --accent: #FCBAD3;   /* 马卡龙玫红 */
+  --background: #FFFFF3; /* 奶油白 */
+  --text: #3A3845;     /* 深灰 */
+}
+
 /* 基础样式 */
 * {
   margin: 0;
@@ -6,10 +15,10 @@
 }
 
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Comic Neue', cursive; /* 更可爱的字体 */
   line-height: 1.6;
-  color: #333;
-  background-color: #f8f9fa;
+  color: var(--text);
+  background-color: var(--background);
 }
 
 .container {
@@ -41,12 +50,13 @@ ul {
 /* 按钮样式 */
 .btn {
   display: inline-block;
-  background-color: #007bff;
+  background: linear-gradient(145deg, var(--secondary), var(--accent));
   color: white;
   padding: 12px 24px;
-  border-radius: 4px;
+  border-radius: 25px;
   text-align: center;
   transition: background-color 0.3s;
+  box-shadow: 0 4px 15px rgba(255,154,139,0.3);
 }
 
 .btn:hover {
@@ -61,7 +71,8 @@ ul {
 
 /* 头部样式 */
 header {
-  background-color: white;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -76,9 +87,9 @@ header .container {
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #333;
+  color: var(--secondary);
+  font-size: 2rem;
+  text-shadow: 2px 2px 0 var(--primary);
 }
 
 nav ul {
@@ -90,14 +101,14 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #555;
-  font-weight: 500;
-  padding: 5px 0;
-  position: relative;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: all 0.3s;
 }
 
 nav ul li a:hover {
-  color: #007bff;
+  background: var(--primary);
+  color: white;
 }
 
 nav ul li a.active {
@@ -159,13 +170,15 @@ nav ul li a.active::after {
 .feature-box {
   text-align: center;
   padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(168,216,234,0.2);
   transition: transform 0.3s;
 }
 
 .feature-box:hover {
-  transform: translateY(-10px);
+  animation: float 2s ease-in-out infinite;
+  transform: scale(1.05);
 }
 
 .feature-box i {
@@ -199,9 +212,9 @@ nav ul li a.active::after {
 
 .project-card {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 20px rgba(168,216,234,0.2);
   transition: transform 0.3s;
 }
 
@@ -440,4 +453,35 @@ footer {
   .hero h2 {
     font-size: 2rem;
   }
+}
+
+/* 添加动画 */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.feature-box:hover {
+  animation: float 2s ease-in-out infinite;
+  transform: scale(1.05);
+}
+
+.contact-form {
+  background: rgba(255,255,255,0.9);
+  border-radius: 30px;
+  padding: 40px;
+}
+
+.form-group input, 
+.form-group textarea {
+  border: 2px solid var(--primary);
+  border-radius: 15px;
+  padding: 12px 20px;
+}
+
+/* 波浪分隔线 */
+.wave-divider {
+  height: 50px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23a8d8ea' d='M0,160L60,170.7C120,181,240,203,360,192C480,181,600,139,720,138.7C840,139,960,181,1080,186.7C1200,192,1320,160,1380,144L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z'/%3E%3C/svg%3E");
 } 
