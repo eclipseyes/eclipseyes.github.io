@@ -1,0 +1,25 @@
+title: 我的个人网站
+description: 这是我的个人网站，展示我的项目和技能
+theme: jekyll-theme-minimal
+
+# 导航菜单
+navigation:
+  - title: 首页
+    url: /
+  - title: 关于
+    url: /about
+  - title: 项目
+    url: /projects
+  - title: 博客
+    url: /blog
+
+# 社交媒体链接
+social:
+  github: your-github-username
+  twitter: your-twitter-username
+  linkedin: your-linkedin-username
+
+# 其他设置
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/

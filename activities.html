@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
+  <!-- 在body开头添加背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/bb4b55f2e35831fb7beb03e461120c28_preview.mp4" type="video/mp4">
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
   <!-- 太空元素 -->
-  <div class="planet one"></div>
-  <div class="planet two"></div>
+  <!-- <div class="planet one"></div>
+  <div class="planet two"></div> -->
   <div class="moon"></div>
   <script>
-    for(let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i++) {
       let star = document.createElement('div');
       star.className = 'star';
       star.style.top = Math.random() * 100 + 'vh';
@@ -26,7 +36,9 @@
 
   <header>
     <div class="container">
-      <h1 class="logo">Eclipseyes</h1>
+      <h1 class="logo">
+        <img src="logo/Pasted-20250316-182207_preview_rev_1.png" alt="Eclipseyes" class="logo-image">
+      </h1>
       <nav>
         <ul>
           <li><a href="index.html" data-lang-key="home">首页</a></li>
@@ -68,7 +80,9 @@
         <div class="activity-card">
           <h3>豆瓣读书</h3>
           <div class="activity-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 100 150'%3E%3Crect width='100' height='150' fill='%23A8D8EA' fill-opacity='0.7'/%3E%3Crect x='10' y='10' width='80' height='20' fill='white' fill-opacity='0.8'/%3E%3Crect x='10' y='40' width='80' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='50' width='60' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='60' width='70' height='5' fill='white' fill-opacity='0.6'/%3E%3C/svg%3E" alt="最近阅读">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 100 150'%3E%3Crect width='100' height='150' fill='%23A8D8EA' fill-opacity='0.7'/%3E%3Crect x='10' y='10' width='80' height='20' fill='white' fill-opacity='0.8'/%3E%3Crect x='10' y='40' width='80' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='50' width='60' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='60' width='70' height='5' fill='white' fill-opacity='0.6'/%3E%3C/svg%3E"
+              alt="最近阅读">
             <div class="activity-info">
               <h4>《深度学习》</h4>
               <p>作者: Ian Goodfellow, Yoshua Bengio, Aaron Courville</p>
@@ -77,7 +91,9 @@
             </div>
           </div>
           <div class="activity-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 100 150'%3E%3Crect width='100' height='150' fill='%23FCBAD3' fill-opacity='0.7'/%3E%3Crect x='10' y='10' width='80' height='20' fill='white' fill-opacity='0.8'/%3E%3Crect x='10' y='40' width='80' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='50' width='60' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='60' width='70' height='5' fill='white' fill-opacity='0.6'/%3E%3C/svg%3E" alt="最近阅读">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 100 150'%3E%3Crect width='100' height='150' fill='%23FCBAD3' fill-opacity='0.7'/%3E%3Crect x='10' y='10' width='80' height='20' fill='white' fill-opacity='0.8'/%3E%3Crect x='10' y='40' width='80' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='50' width='60' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='60' width='70' height='5' fill='white' fill-opacity='0.6'/%3E%3C/svg%3E"
+              alt="最近阅读">
             <div class="activity-info">
               <h4>《三体》</h4>
               <p>作者: 刘慈欣</p>
@@ -90,7 +106,9 @@
         <div class="activity-card">
           <h3>Hugging Face</h3>
           <div class="activity-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23070A0F'/%3E%3Ccircle cx='50' cy='50' r='40' fill='%23FF9A8B' fill-opacity='0.7'/%3E%3Cpath d='M30,50 Q50,30 70,50 Q50,70 30,50' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E" alt="Hugging Face 项目">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23070A0F'/%3E%3Ccircle cx='50' cy='50' r='40' fill='%23FF9A8B' fill-opacity='0.7'/%3E%3Cpath d='M30,50 Q50,30 70,50 Q50,70 30,50' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E"
+              alt="Hugging Face 项目">
             <div class="activity-info">
               <h4>BERT 文本分类模型</h4>
               <p>贡献: 上传了一个针对中文文本分类的微调BERT模型</p>
@@ -102,7 +120,9 @@
         <div class="activity-card">
           <h3>edX 课程</h3>
           <div class="activity-item">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23070A0F'/%3E%3Cpath d='M20,50 L40,30 L60,50 L80,30' stroke='%23B5EAD7' stroke-width='4' fill='none'/%3E%3Cpath d='M20,70 L40,50 L60,70 L80,50' stroke='%23B5EAD7' stroke-width='4' fill='none'/%3E%3C/svg%3E" alt="edX 课程">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23070A0F'/%3E%3Cpath d='M20,50 L40,30 L60,50 L80,30' stroke='%23B5EAD7' stroke-width='4' fill='none'/%3E%3Cpath d='M20,70 L40,50 L60,70 L80,50' stroke='%23B5EAD7' stroke-width='4' fill='none'/%3E%3C/svg%3E"
+              alt="edX 课程">
             <div class="activity-info">
               <h4>CS50: Introduction to AI with Python</h4>
               <p>完成时间: 2023年3月</p>
@@ -151,28 +171,28 @@
   <script src="js/language.js"></script>
   <script>
     // 密码验证
-    document.addEventListener('DOMContentLoaded', function() {
-      const correctPassword = "Qy~:=.123dQy~?";
+    document.addEventListener('DOMContentLoaded', function () {
+      const correctPassword = "qiuyue";
       const passwordModal = document.getElementById('passwordModal');
       const hiddenContent = document.getElementById('hiddenContent');
       const submitBtn = document.getElementById('submitPassword');
       const passwordInput = document.getElementById('password');
       const errorMessage = document.getElementById('errorMessage');
-      
+
       // 检查是否已经验证过密码
       const isAuthenticated = sessionStorage.getItem('authenticated') === 'true';
       if (isAuthenticated) {
         passwordModal.style.display = 'none';
         hiddenContent.style.display = 'block';
       }
-      
+
       submitBtn.addEventListener('click', checkPassword);
-      passwordInput.addEventListener('keypress', function(e) {
+      passwordInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
           checkPassword();
         }
       });
-      
+
       function checkPassword() {
         if (passwordInput.value === correctPassword) {
           // 密码正确
@@ -180,7 +200,7 @@
           hiddenContent.style.display = 'block';
           // 保存验证状态到会话
           sessionStorage.setItem('authenticated', 'true');
-          
+
           // 添加进入动画
           const elements = document.querySelectorAll('.activity-card, .activity-item');
           elements.forEach((element, index) => {
@@ -201,4 +221,5 @@
     });
   </script>
 </body>
-</html> 
+
+</html>

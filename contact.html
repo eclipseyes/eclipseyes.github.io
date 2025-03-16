@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>联系我 - 我的个人网站</title>
+  <title>联系我 - Eclipseyes</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* 联系页面特定样式 */
     .contact-container {
@@ -113,81 +114,122 @@
 </head>
 
 <body>
+  <!-- 在body开头添加背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/bb4b55f2e35831fb7beb03e461120c28_preview.mp4" type="video/mp4">
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
+  <!-- 太空元素 -->
+  <!-- <div class="planet one"></div>
+  <div class="planet two"></div> -->
+  <div class="moon"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
   <header>
     <div class="container">
-      <h1 class="logo">我的网站</h1>
+      <h1 class="logo">
+        <img src="logo/Pasted-20250316-182207_preview_rev_1.png" alt="Eclipseyes" class="logo-image">
+      </h1>
       <nav>
         <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="about.html">关于我</a></li>
-          <li><a href="projects.html">项目展示</a></li>
-          <li><a href="blog.html">博客</a></li>
-          <li><a href="contact.html" class="active">联系方式</a></li>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="about.html" data-lang-key="about">关于我</a></li>
+          <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" class="active" data-lang-key="contact">联系方式</a></li>
+          <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
         </ul>
+        <div class="language-switch">
+          <button id="zh-btn" class="active">中文</button>
+          <button id="en-btn">EN</button>
+        </div>
       </nav>
     </div>
   </header>
 
   <section class="page-header">
     <div class="container">
-      <h2>联系我</h2>
+      <h2 data-lang-key="contact">联系方式</h2>
     </div>
   </section>
 
-  <section class="container contact-container">
-    <div class="contact-info">
-      <h3>联系信息</h3>
-      <p>如果您有任何问题或合作意向，请随时通过以下方式联系我。</p>
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>联系信息</h3>
+          <p class="info-description">如果您对我的研究或项目有任何疑问，或者希望进行学术交流，欢迎通过以下方式联系我：</p>
 
-      <div class="info-item">
-        <i class="fas fa-envelope"></i>
-        <span>email@example.com</span>
-      </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <p>eclipsefadingmoon@gmail.com</p>
+          </div>
 
-      <div class="info-item">
-        <i class="fas fa-phone"></i>
-        <span>+86 123 4567 8910</span>
-      </div>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>中国湖北省武汉市 华中科技大学</p>
+          </div>
 
-      <div class="info-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>北京市，中国</span>
-      </div>
+          <div class="social-links">
+            <h4>社交媒体</h4>
+            <div class="social-icons">
+              <a href="#" class="social-icon">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+          </div>
 
-      <h3>社交媒体</h3>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-weixin"></i></a>
-      </div>
-    </div>
-
-    <div class="contact-form">
-      <h3>发送消息</h3>
-      <form id="contactForm">
-        <div class="form-group">
-          <label for="name">姓名</label>
-          <input type="text" id="name" name="name" required>
+          <div class="contact-note">
+            <p>注意：我更倾向于通过电子邮件进行联系。通常会在2-3个工作日内回复。</p>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="email">邮箱</label>
-          <input type="email" id="email" name="email" required>
+        <div class="contact-form">
+          <h3>发送消息</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">姓名</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">邮箱</label>
+              <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">主题</label>
+              <input type="text" id="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">消息</label>
+              <textarea id="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="btn">发送消息</button>
+          </form>
         </div>
-
-        <div class="form-group">
-          <label for="subject">主题</label>
-          <input type="text" id="subject" name="subject" required>
-        </div>
-
-        <div class="form-group">
-          <label for="message">消息</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">发送消息</button>
-      </form>
+      </div>
     </div>
   </section>
 
@@ -195,21 +237,21 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>关于</h3>
-          <p>个人网站展示我的技能、项目和经验。</p>
+          <h3 data-lang-key="about">关于</h3>
+          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学生，研究兴趣是机器学习和大语言模型。</p>
         </div>
         <div class="footer-section">
-          <h3>快速链接</h3>
+          <h3 data-lang-key="quick-links">快速链接</h3>
           <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="about.html">关于我</a></li>
-            <li><a href="projects.html">项目</a></li>
-            <li><a href="contact.html">联系我</a></li>
+            <li><a href="index.html" data-lang-key="home">首页</a></li>
+            <li><a href="about.html" data-lang-key="about">关于我</a></li>
+            <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+            <li><a href="contact.html" data-lang-key="contact">联系我</a></li>
           </ul>
         </div>
         <div class="footer-section">
-          <h3>联系方式</h3>
-          <p><i class="fas fa-envelope"></i> email@example.com</p>
+          <h3 data-lang-key="contact">联系方式</h3>
+          <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
           <div class="social-icons">
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -218,12 +260,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 我的个人网站. 保留所有权利.</p>
+        <p>&copy; 2023 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
   <script>
     // 表单提交处理
     document.getElementById('contactForm').addEventListener('submit', function (e) {

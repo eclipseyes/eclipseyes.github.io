@@ -1,31 +1,85 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>关于我 - 我的个人网站</title>
+  <title>关于我 - Eclipseyes</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
+  <!-- 在body开头添加背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/bb4b55f2e35831fb7beb03e461120c28_preview.mp4" type="video/mp4">
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
+  <!-- 在body开头添加背景音乐 -->
+  <audio id="bgMusic" loop preload="auto" controlsList="nodownload">
+    <source src="music/05-VEED.mp3" type="audio/mpeg">
+    <!-- 提供备用格式可能有助于兼容性 -->
+    <source src="music/05-VEED.ogg" type="audio/ogg">
+    您的浏览器不支持音频元素。
+  </audio>
+
+  <!-- 添加音乐控制按钮 -->
+  <div class="music-control">
+    <button id="musicToggle" class="music-btn">
+      <i class="fas fa-music"></i>
+    </button>
+  </div>
+
+  <!-- 太空元素 - 移除星球 -->
+  <!-- <div class="planet one"></div> -->
+  <!-- <div class="planet two"></div> -->
+  <div class="moon"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
   <header>
     <div class="container">
-      <h1 class="logo">我的网站</h1>
+      <h1 class="logo">
+        <img src="logo/Pasted-20250316-182207_preview_rev_1.png" alt="Eclipseyes" class="logo-image">
+      </h1>
       <nav>
         <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="about.html" class="active">关于我</a></li>
-          <li><a href="projects.html">项目展示</a></li>
-          <li><a href="blog.html">博客</a></li>
-          <li><a href="contact.html">联系方式</a></li>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="about.html" class="active" data-lang-key="about">关于我</a></li>
+          <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" data-lang-key="contact">联系方式</a></li>
+          <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
         </ul>
+
+        <div class="language-switch">
+          <button id="zh-btn" class="active">中</button>
+          <button id="en-btn">EN</button>
+        </div>
       </nav>
     </div>
   </header>
 
   <section class="page-header">
     <div class="container">
-      <h2>关于我</h2>
+      <h2 data-lang-key="about">关于我</h2>
     </div>
   </section>
 
@@ -33,56 +87,76 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image">
-          <img src="images/profile.jpg" alt="我的照片">
+          <img src="profile/b_43f1292ccd9b41beb5a59c3ee8ed8d61.jpg" alt="邱月的头像" class="avatar">
         </div>
         <div class="about-text">
-          <h3>个人简介</h3>
-          <p>在这里写上您的个人简介，包括您的背景、教育经历、职业经历等。这部分内容应该让访问者了解您是谁，您的专业领域是什么，以及您的职业目标。</p>
-          
-          <h3>技能</h3>
-          <div class="skills">
-            <div class="skill-item">
-              <span>HTML/CSS</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 90%"></div>
+          <h3 data-lang-key="intro">简介</h3>
+          <p data-lang-key="bio">我是<strong>邱月</strong> (Yue Qiu)，网名
+            <strong>eclipseyes</strong>，华中科技大学计算机学院本科生。我对机器学习和大语言模型充满热情，尤其专注于自然语言处理和多模态学习。
+          </p>
+
+          <p data-lang-key="contact-info">
+            <i class="fas fa-envelope"></i> 邮箱联系:&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="mailto:eclipsefadingmoon@gmail.com">eclipsefadingmoon@gmail.com</a>
+          </p>
+
+          <div class="about-section">
+            <h3 data-lang-key="education">教育背景</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <h4>重庆南开中学 高中</h4>
+                </div>
               </div>
-            </div>
-            <div class="skill-item">
-              <span>JavaScript</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 85%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span>React</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 80%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span>Node.js</span>
-              <div class="skill-bar">
-                <div class="skill-level" style="width: 75%"></div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2023 - 至今</div>
+                <div class="timeline-content">
+                  <h4>华中科技大学 计算机科学与技术专业 本科</h4>
+                </div>
               </div>
             </div>
           </div>
-          
-          <h3>教育背景</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">2018 - 2022</div>
-              <div class="timeline-content">
-                <h4>计算机科学学士</h4>
-                <p>某某大学</p>
+
+          <div class="about-section">
+            <h3 data-lang-key="skills">技能专长</h3>
+            <div class="skills-container">
+              <div class="skill-bar">
+                <span class="skill-label">机器学习</span>
+                <div class="skill-progress">
+                  <div class="skill-fill" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label">Python</span>
+                <div class="skill-progress">
+                  <div class="skill-fill" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label">深度学习</span>
+                <div class="skill-progress">
+                  <div class="skill-fill" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label">数据分析</span>
+                <div class="skill-progress">
+                  <div class="skill-fill" style="width: 85%"></div>
+                </div>
               </div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-date">2022 - 至今</div>
-              <div class="timeline-content">
-                <h4>计算机科学硕士</h4>
-                <p>某某大学</p>
-              </div>
-            </div>
+          </div>
+
+          <div class="about-section">
+            <h3 data-lang-key="research-interests">研究兴趣</h3>
+            <ul class="interest-list">
+              <li>大语言模型的微调与部署</li>
+              <li>自然语言处理中的情感分析</li>
+              <li>机器学习在教育领域的应用</li>
+              <li>多模态学习</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -93,21 +167,21 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>关于</h3>
-          <p>个人网站展示我的技能、项目和经验。</p>
+          <h3 data-lang-key="about">关于</h3>
+          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学生，研究兴趣是机器学习和大语言模型。</p>
         </div>
         <div class="footer-section">
-          <h3>快速链接</h3>
+          <h3 data-lang-key="quick-links">快速链接</h3>
           <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="about.html">关于我</a></li>
-            <li><a href="projects.html">项目</a></li>
-            <li><a href="contact.html">联系我</a></li>
+            <li><a href="index.html" data-lang-key="home">首页</a></li>
+            <li><a href="about.html" data-lang-key="about">关于我</a></li>
+            <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+            <li><a href="contact.html" data-lang-key="contact">联系我</a></li>
           </ul>
         </div>
         <div class="footer-section">
-          <h3>联系方式</h3>
-          <p><i class="fas fa-envelope"></i> email@example.com</p>
+          <h3 data-lang-key="contact">联系方式</h3>
+          <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
           <div class="social-icons">
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -116,11 +190,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 我的个人网站. 保留所有权利.</p>
+        <p>&copy; 2023 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
 </body>
-</html> 
+
+</html>

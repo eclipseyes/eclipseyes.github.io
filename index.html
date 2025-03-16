@@ -9,6 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- 在body开头添加背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/bb4b55f2e35831fb7beb03e461120c28_preview.mp4" type="video/mp4">
+      <!-- 如果需要更好的浏览器兼容性，可以添加不同格式 -->
+      <!-- <source src="wallpaper/background.webm" type="video/webm"> -->
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
   <!-- 太空元素 -->
   <div class="planet one"></div>
   <div class="planet two"></div>
@@ -27,7 +37,9 @@
 
   <header>
     <div class="container">
-      <h1 class="logo">Eclipseyes</h1>
+      <h1 class="logo">
+        <img src="logo/Pasted-20250316-182207_preview_rev_1.png" alt="Eclipseyes" class="logo-image">
+      </h1>
       <nav>
         <ul>
           <li><a href="index.html" class="active" data-lang-key="home">首页</a></li>
@@ -39,7 +51,7 @@
           <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
         </ul>
         <div class="language-switch">
-          <button id="zh-btn" class="active">中文</button>
+          <button id="zh-btn" class="active">中</button>
           <button id="en-btn">EN</button>
         </div>
       </nav>

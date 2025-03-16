@@ -3,88 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>项目展示 - 我的个人网站</title>
+  <title>项目展示 - Eclipseyes</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- 在body开头添加背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/bb4b55f2e35831fb7beb03e461120c28_preview.mp4" type="video/mp4">
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
+  <!-- 太空元素 -->
+  <div class="planet one"></div>
+  <div class="planet two"></div>
+  <div class="moon"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+  
+  <script>
+    for(let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
   <header>
     <div class="container">
-      <h1 class="logo">我的网站</h1>
+      <h1 class="logo">
+        <img src="logo/Pasted-20250316-182207_preview_rev_1.png" alt="Eclipseyes" class="logo-image">
+      </h1>
       <nav>
         <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="about.html">关于我</a></li>
-          <li><a href="projects.html" class="active">项目展示</a></li>
-          <li><a href="blog.html">博客</a></li>
-          <li><a href="contact.html">联系方式</a></li>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="about.html" data-lang-key="about">关于我</a></li>
+          <li><a href="projects.html" class="active" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" data-lang-key="contact">联系方式</a></li>
+          <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
         </ul>
+        <div class="language-switch">
+          <button id="zh-btn" class="active">中文</button>
+          <button id="en-btn">EN</button>
+        </div>
       </nav>
     </div>
   </header>
 
   <section class="page-header">
     <div class="container">
-      <h2>项目展示</h2>
+      <h2 data-lang-key="projects">项目展示</h2>
     </div>
   </section>
 
   <section class="projects-section">
     <div class="container">
-      <div class="project-filters">
-        <button class="filter-btn active" data-filter="all">全部</button>
-        <button class="filter-btn" data-filter="web">网站开发</button>
-        <button class="filter-btn" data-filter="mobile">移动应用</button>
-        <button class="filter-btn" data-filter="other">其他项目</button>
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">所有项目</button>
+        <button class="filter-btn" data-filter="ml">机器学习</button>
+        <button class="filter-btn" data-filter="nlp">自然语言处理</button>
+        <button class="filter-btn" data-filter="llm">大语言模型</button>
       </div>
       
-      <div class="projects-grid">
-        <div class="project-card" data-category="web" id="project1">
-          <img src="images/project1.jpg" alt="项目1">
-          <h3>响应式网站设计</h3>
-          <p>使用HTML5、CSS3和JavaScript开发的响应式网站，适配各种设备屏幕。</p>
-          <div class="project-tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
+      <div class="projects-container">
+        <div class="project-card" data-category="nlp" id="project1">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23070A0F'/%3E%3Ccircle cx='150' cy='100' r='70' fill='%23A8D8EA' fill-opacity='0.7'/%3E%3Ccircle cx='130' cy='80' r='15' fill='white' fill-opacity='0.5'/%3E%3C/svg%3E" alt="基于BERT的情感分析">
+          <h3>基于BERT的情感分析</h3>
+          <p>使用BERT模型对社交媒体文本进行情感分析和分类，取得了89%的准确率。该项目能够识别文本中的情感倾向、主题和关键词。</p>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>BERT</span>
+            <span>NLP</span>
+            <span>PyTorch</span>
           </div>
-          <a href="#" class="btn-small">查看详情</a>
+          <div class="project-links">
+            <a href="#" class="btn-small">查看代码</a>
+            <a href="#" class="btn-small">演示</a>
+          </div>
         </div>
         
-        <div class="project-card" data-category="mobile" id="project2">
-          <img src="images/project2.jpg" alt="项目2">
-          <h3>移动应用开发</h3>
-          <p>使用React Native开发的跨平台移动应用，支持iOS和Android系统。</p>
-          <div class="project-tags">
-            <span>React Native</span>
-            <span>JavaScript</span>
-            <span>移动开发</span>
+        <div class="project-card" data-category="llm" id="project2">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23070A0F'/%3E%3Cpath d='M50,150 L100,70 L150,120 L200,50 L250,100' stroke='%23FF9A8B' stroke-width='4' fill='none'/%3E%3Ccircle cx='50' cy='150' r='5' fill='%23FCBAD3'/%3E%3Ccircle cx='100' cy='70' r='5' fill='%23FCBAD3'/%3E%3Ccircle cx='150' cy='120' r='5' fill='%23FCBAD3'/%3E%3Ccircle cx='200' cy='50' r='5' fill='%23FCBAD3'/%3E%3Ccircle cx='250' cy='100' r='5' fill='%23FCBAD3'/%3E%3C/svg%3E" alt="GPT模型微调研究">
+          <h3>GPT模型微调研究</h3>
+          <p>针对教育领域对GPT模型进行微调，构建了面向计算机科学课程辅助的AI助手。该项目探索了不同微调方法对模型性能的影响。</p>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>GPT</span>
+            <span>微调</span>
+            <span>教育AI</span>
           </div>
-          <a href="#" class="btn-small">查看详情</a>
+          <div class="project-links">
+            <a href="#" class="btn-small">查看代码</a>
+            <a href="#" class="btn-small">论文</a>
+          </div>
         </div>
         
-        <div class="project-card" data-category="web">
-          <img src="images/project3.jpg" alt="项目3">
-          <h3>电子商务网站</h3>
-          <p>基于React和Node.js开发的完整电子商务解决方案，包括支付集成。</p>
-          <div class="project-tags">
-            <span>React</span>
-            <span>Node.js</span>
-            <span>MongoDB</span>
+        <div class="project-card" data-category="ml">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23070A0F'/%3E%3Crect x='60' y='30' width='30' height='140' fill='%23B5EAD7' fill-opacity='0.7'/%3E%3Crect x='135' y='60' width='30' height='110' fill='%23B5EAD7' fill-opacity='0.7'/%3E%3Crect x='210' y='90' width='30' height='80' fill='%23B5EAD7' fill-opacity='0.7'/%3E%3C/svg%3E" alt="学习行为预测模型">
+          <h3>学习行为预测模型</h3>
+          <p>基于机器学习算法开发的学生学习行为预测模型，通过分析学习平台的用户行为数据，预测学习成果和潜在的学习困难。</p>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>Sklearn</span>
+            <span>数据分析</span>
+            <span>预测模型</span>
           </div>
-          <a href="#" class="btn-small">查看详情</a>
+          <div class="project-links">
+            <a href="#" class="btn-small">查看代码</a>
+            <a href="#" class="btn-small">报告</a>
+          </div>
         </div>
         
-        <div class="project-card" data-category="other">
-          <img src="images/project4.jpg" alt="项目4">
-          <h3>数据可视化工具</h3>
-          <p>使用D3.js开发的数据可视化工具，帮助用户理解复杂数据集。</p>
-          <div class="project-tags">
-            <span>D3.js</span>
-            <span>JavaScript</span>
-            <span>数据可视化</span>
+        <div class="project-card" data-category="llm">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23070A0F'/%3E%3Ccircle cx='80' cy='80' r='40' fill='%23FFFFB5' fill-opacity='0.6'/%3E%3Ccircle cx='200' cy='100' r='50' fill='%23FCBAD3' fill-opacity='0.6'/%3E%3Cpath d='M100,100 Q150,50 200,100' stroke='white' stroke-width='2' fill='none'/%3E%3C/svg%3E" alt="多模态学习项目">
+          <h3>中文医学对话数据集构建</h3>
+          <p>搜集并整理了大量中文医学对话数据，构建了专业的医学领域对话数据集，为医学领域的大语言模型训练提供了高质量数据支持。</p>
+          <div class="project-tech">
+            <span>数据处理</span>
+            <span>医学NLP</span>
+            <span>数据标注</span>
+            <span>中文语料</span>
           </div>
-          <a href="#" class="btn-small">查看详情</a>
+          <div class="project-links">
+            <a href="#" class="btn-small">数据集</a>
+            <a href="#" class="btn-small">文档</a>
+          </div>
         </div>
       </div>
     </div>
@@ -94,21 +146,21 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>关于</h3>
-          <p>个人网站展示我的技能、项目和经验。</p>
+          <h3 data-lang-key="about">关于</h3>
+          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学生，研究兴趣是机器学习和大语言模型。</p>
         </div>
         <div class="footer-section">
-          <h3>快速链接</h3>
+          <h3 data-lang-key="quick-links">快速链接</h3>
           <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="about.html">关于我</a></li>
-            <li><a href="projects.html">项目</a></li>
-            <li><a href="contact.html">联系我</a></li>
+            <li><a href="index.html" data-lang-key="home">首页</a></li>
+            <li><a href="about.html" data-lang-key="about">关于我</a></li>
+            <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+            <li><a href="contact.html" data-lang-key="contact">联系我</a></li>
           </ul>
         </div>
         <div class="footer-section">
-          <h3>联系方式</h3>
-          <p><i class="fas fa-envelope"></i> email@example.com</p>
+          <h3 data-lang-key="contact">联系方式</h3>
+          <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
           <div class="social-icons">
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -117,37 +169,12 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 我的个人网站. 保留所有权利.</p>
+        <p>&copy; 2023 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
-  <script>
-    // 项目筛选功能
-    document.addEventListener('DOMContentLoaded', function() {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const projectCards = document.querySelectorAll('.project-card');
-      
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          // 移除所有按钮的active类
-          filterBtns.forEach(btn => btn.classList.remove('active'));
-          // 给当前点击的按钮添加active类
-          this.classList.add('active');
-          
-          const filter = this.getAttribute('data-filter');
-          
-          projectCards.forEach(card => {
-            if (filter === 'all' || card.getAttribute('data-category') === filter) {
-              card.style.display = 'block';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      });
-    });
-  </script>
+  <script src="js/language.js"></script>
 </body>
 </html> 
