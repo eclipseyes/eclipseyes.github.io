@@ -19,7 +19,7 @@
   --gold: #f48530;
 
   --pastel-mint: #00BFFF;
-   /* 马卡龙薄荷绿 */
+  /* 马卡龙薄荷绿 */
 
 }
 
@@ -1616,16 +1616,4 @@ body>footer {
     opacity: 0;
     transform: scale(1.2) translate(1500px, 300px);
   }
-}
-
-/* 将"了解更多"按钮单独设置为金色 */
-a[data-lang-key="learn-more"] {
-  background: linear-gradient(145deg, var(--gold), #ffb347);
-  box-shadow: 0 4px 15px rgba(244, 133, 48, 0.3);
-}
-
-a[data-lang-key="learn-more"]:hover {
-  background: var(--gold);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(244, 133, 48, 0.4);
 }

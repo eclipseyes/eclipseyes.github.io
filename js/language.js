@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     'about-desc': {
       'zh': '我是邱月，华中科技大学计算机学院学习～',
-      'en': 'I am Yue Qiu, a computer science student at HUST. My research interests are machine learning and large language models.'
+      'en': 'I am Yue Qiu, a computer science student at HUST now.'
     },
     'quick-links': {
       'zh': '快速链接',
