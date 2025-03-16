@@ -14,7 +14,7 @@
   <!-- 在body开头添加背景视频 -->
   <div class="video-background">
     <video autoplay muted loop id="bgVideo">
-      <source src="wallpaper/bb4b55f2e35831fb7beb03e461120c28_preview.mp4" type="video/mp4">
+      <source src="wallpaper/firefly-lying-in-the-water-honkai-star-rail-moewalls-com.mp4" type="video/mp4">
       您的浏览器不支持背景视频。
     </video>
   </div>
@@ -26,13 +26,6 @@
     <source src="music/05-VEED.ogg" type="audio/ogg">
     您的浏览器不支持音频元素。
   </audio>
-
-  <!-- 添加音乐控制按钮 -->
-  <div class="music-control">
-    <button id="musicToggle" class="music-btn">
-      <i class="fas fa-music"></i>
-    </button>
-  </div>
 
   <!-- 太空元素 - 移除星球 -->
   <!-- <div class="planet one"></div> -->
@@ -55,23 +48,29 @@
 
   <header>
     <div class="container">
+      <!-- 添加音乐控制到Logo左边 -->
+      <div class="nav-music-control">
+        <button id="navMusicToggle" class="nav-music-btn">
+          <i class="fas fa-music"></i>
+        </button>
+      </div>
+
       <h1 class="logo">
-        <img src="logo/Pasted-20250316-182207_preview_rev_1.png" alt="Eclipseyes" class="logo-image">
+        <img src="logo/preview.png" alt="Eclipseyes" class="logo-image">
       </h1>
       <nav>
         <ul>
           <li><a href="index.html" data-lang-key="home">首页</a></li>
-          <li><a href="about.html" class="active" data-lang-key="about">关于我</a></li>
           <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
           <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
           <li><a href="research.html" data-lang-key="research">研究成果</a></li>
-          <li><a href="contact.html" data-lang-key="contact">联系方式</a></li>
+          <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
           <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
+          <li><a href="about.html" class="active" data-lang-key="about">关于我</a></li>
         </ul>
-
         <div class="language-switch">
-          <button id="zh-btn" class="active">中</button>
-          <button id="en-btn">EN</button>
+          <button id="zh-btn" class="lang-btn active">中</button>
+          <button id="en-btn" class="lang-btn">EN</button>
         </div>
       </nav>
     </div>
@@ -79,7 +78,7 @@
 
   <section class="page-header">
     <div class="container">
-      <h2 data-lang-key="about">关于我</h2>
+      <h2 data-lang-key="about" class="en-title">关于我</h2>
     </div>
   </section>
 
@@ -91,8 +90,8 @@
         </div>
         <div class="about-text">
           <h3 data-lang-key="intro">简介</h3>
-          <p data-lang-key="bio">我是<strong>邱月</strong> (Yue Qiu)，网名
-            <strong>eclipseyes</strong>，华中科技大学计算机学院本科生。我对机器学习和大语言模型充满热情，尤其专注于自然语言处理和多模态学习。
+          <p data-lang-key="bio">我是邱月，昵称
+            eclipseyes ～，现在在华中科技大学计算机学院读本科。正在学习和研究NLP相关～
           </p>
 
           <p data-lang-key="contact-info">
@@ -102,18 +101,17 @@
 
           <div class="about-section">
             <h3 data-lang-key="education">教育背景</h3>
-            <div class="timeline">
+            <div class="education-timeline">
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                  <h4>重庆南开中学 高中</h4>
+                  <h4 data-lang-key="chongqing-nankai">重庆南开中学 高中</h4>
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-date">2023 - 至今</div>
                 <div class="timeline-content">
-                  <h4>华中科技大学 计算机科学与技术专业 本科</h4>
+                  <h4 data-lang-key="hust-cs">华中科技大学 计算机科学与技术专业 在读本科</h4>
                 </div>
               </div>
             </div>
@@ -123,25 +121,25 @@
             <h3 data-lang-key="skills">技能专长</h3>
             <div class="skills-container">
               <div class="skill-bar">
-                <span class="skill-label">机器学习</span>
+                <span class="skill-label" data-lang-key="machine-learning-skill">机器学习</span>
                 <div class="skill-progress">
                   <div class="skill-fill" style="width: 85%"></div>
                 </div>
               </div>
               <div class="skill-bar">
-                <span class="skill-label">Python</span>
+                <span class="skill-label" data-lang-key="python-skill">Python</span>
                 <div class="skill-progress">
                   <div class="skill-fill" style="width: 95%"></div>
                 </div>
               </div>
               <div class="skill-bar">
-                <span class="skill-label">深度学习</span>
+                <span class="skill-label" data-lang-key="deep-learning-skill">深度学习</span>
                 <div class="skill-progress">
                   <div class="skill-fill" style="width: 80%"></div>
                 </div>
               </div>
               <div class="skill-bar">
-                <span class="skill-label">数据分析</span>
+                <span class="skill-label" data-lang-key="data-analysis-skill">数据分析</span>
                 <div class="skill-progress">
                   <div class="skill-fill" style="width: 85%"></div>
                 </div>
@@ -152,10 +150,9 @@
           <div class="about-section">
             <h3 data-lang-key="research-interests">研究兴趣</h3>
             <ul class="interest-list">
-              <li>大语言模型的微调与部署</li>
-              <li>自然语言处理中的情感分析</li>
-              <li>机器学习在教育领域的应用</li>
-              <li>多模态学习</li>
+              <li data-lang-key="llm-finetuning">大语言模型的微调与部署</li>
+              <li data-lang-key="nlp">自然语言处理</li>
+              <li data-lang-key="multimodal">多模态学习</li>
             </ul>
           </div>
         </div>
@@ -180,12 +177,10 @@
           </ul>
         </div>
         <div class="footer-section">
-          <h3 data-lang-key="contact">联系方式</h3>
+          <h3 data-lang-key="contact">留言板</h3>
           <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
           <div class="social-icons">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/eclipseyes" target="_blank"><i class="fab fa-github"></i></a>
           </div>
         </div>
       </div>

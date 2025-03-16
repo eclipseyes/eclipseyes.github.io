@@ -16,7 +16,7 @@
   /* 太空黑 */
   --light-text: #E0E0E0;
   /* 文字颜色 */
-  --pastel-mint: #BEE3DB;
+  --pastel-mint: #00BFFF;
   /* 马卡龙薄荷绿 */
 }
 
@@ -92,7 +92,7 @@ ul {
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background-color: var(--pastel-mint);
   color: white;
 }
 
@@ -123,7 +123,6 @@ header .container {
   align-items: center;
   margin: 0;
   padding: 0;
-  margin-left: -15px;
 }
 
 /* Logo图片样式 */
@@ -136,10 +135,10 @@ header .container {
 }
 
 nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
 }
 
 nav ul {
@@ -147,7 +146,6 @@ nav ul {
   gap: 24px;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
 }
 
 nav ul li a {
@@ -173,12 +171,12 @@ nav ul li a.active {
 
 /* 英雄区域样式 */
 .hero {
-  background: linear-gradient(180deg, transparent, var(--dark-bg));
   position: relative;
-  overflow: hidden;
-  color: white;
-  text-align: center;
   padding: 100px 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  /* 透明黑色背景 */
+  color: var(--light-text);
 }
 
 .hero h2 {
@@ -201,17 +199,21 @@ nav ul li a.active {
 
 .hero .btn {
   background-color: white;
-  color: #007bff;
+  color: var(--pastel-mint);
 }
 
 .hero .btn:hover {
   background-color: #f8f9fa;
+  color: var(--pastel-mint);
+  opacity: 0.9;
 }
 
 /* 特性区域样式 */
 .features {
   padding: 80px 0;
-  background-color: white;
+  background: rgba(0, 0, 0, 0.5);
+  /* 透明黑色背景替代原来的白色 */
+  position: relative;
 }
 
 .features .container {
@@ -231,14 +233,13 @@ nav ul li a.active {
 }
 
 .feature-box {
-  text-align: center;
+  background: rgba(10, 15, 30, 0.7);
+  /* 稍微深一点的透明背景 */
+  border-radius: 10px;
   padding: 30px;
-  border-radius: 20px;
-  background: rgba(7, 10, 15, 0.6);
-  border: 1px solid rgba(168, 216, 234, 0.2);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
-  transition: transform 0.3s;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .feature-box:hover {
@@ -260,7 +261,10 @@ nav ul li a.active {
 /* 最新项目区域样式 */
 .recent-projects {
   padding: 80px 0;
-  background-color: #f8f9fa;
+  /* 删除白色背景，改为透明 */
+  background: rgba(0, 0, 0, 0.5);
+  /* 添加与其他部分一致的透明黑色背景 */
+  position: relative;
 }
 
 .recent-projects h2 {
@@ -271,8 +275,9 @@ nav ul li a.active {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
+  margin-top: 40px;
 }
 
 .project-card {
@@ -869,44 +874,46 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 1000;
 }
 
 .password-container {
-  background: rgba(7, 10, 15, 0.8);
+  background: linear-gradient(145deg, #1A1A2E, #16213E);
   padding: 30px;
-  border-radius: 20px;
-  border: 1px solid var(--primary);
-  max-width: 400px;
+  border-radius: 15px;
   width: 90%;
-  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  position: relative;
+  border: 1px solid rgba(163, 191, 250, 0.2);
 }
 
-.password-container h2 {
-  color: var(--secondary);
-  margin-bottom: 20px;
-}
-
-.password-container input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--primary);
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  color: var(--light-text);
-  margin-bottom: 20px;
-}
-
-.password-container button {
-  background: linear-gradient(145deg, var(--secondary), var(--accent));
-  color: white;
+/* 关闭按钮样式 - 左上角红色圆点 */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #FF5A5A;
   border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 0;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* 隐藏页面内容 */
+.close-btn:hover {
+  background-color: #FF3030;
+}
+
+/* 确保内容区域默认隐藏 */
 .hidden-content {
   display: none;
 }
@@ -1115,6 +1122,63 @@ nav,
   font-display: swap;
 }
 
+/* 自定义字体定义 */
+/* 英文粗体字体 */
+@font-face {
+  font-family: 'SpectralSC';
+  src: url('../fonts/SpectralSC-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* 中文粗体字体 */
+@font-face {
+  font-family: 'DinglieSong';
+  src: url('../fonts/dingliesongtypeface20241217-2.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 中文粗体应用丁列宋体 */
+:lang(zh) strong,
+strong:not([lang="en"]):not(.en) {
+  font-family: 'DinglieSong', serif;
+  font-weight: bold;
+}
+
+/* 英文粗体应用SpectralSC */
+:lang(en) h1,
+:lang(en) h2,
+:lang(en) h3,
+:lang(en) h4,
+:lang(en) a,
+h1[lang="en"],
+h2[lang="en"],
+h3[lang="en"],
+h4[lang="en"],
+a[lang="en"],
+h1.en,
+h2.en,
+h3.en,
+h4.en,
+a.en,
+.en-title,
+nav a[data-lang-key][lang="en"],
+[data-lang-key="welcome"][lang="en"],
+[data-lang-key="about"][lang="en"],
+[data-lang-key="projects"][lang="en"],
+[data-lang-key="blog"][lang="en"],
+[data-lang-key="research"][lang="en"],
+[data-lang-key="contact"][lang="en"],
+[data-lang-key="home"][lang="en"],
+[data-lang-key="activities"][lang="en"] {
+  font-family: 'SpectralSC', serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
 /* 内容区标题样式 */
 .about-section h3,
 .project-section h3,
@@ -1191,93 +1255,88 @@ section h3:lang(en) {
 /* 音乐控制按钮样式 */
 .music-control {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  /* 确保在所有元素之上 */
+  width: 40px;
+  height: 40px;
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  /* 确保可点击 */
 }
 
 .music-btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(163, 191, 250, 0.3);
+  background: rgba(0, 0, 0, 0.5);
   border: 2px solid var(--primary);
-  color: var(--accent);
-  font-size: 18px;
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(163, 191, 250, 0.5);
+  transition: all 0.3s;
+  outline: none;
+  position: relative;
+  z-index: 10000;
+  /* 比父容器更高 */
 }
 
 .music-btn:hover {
   transform: scale(1.1);
-  background: rgba(163, 191, 250, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .music-btn.playing {
   animation: pulse 2s infinite;
-  color: var(--secondary);
 }
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(247, 233, 135, 0.5);
+    box-shadow: 0 0 0 0 rgba(163, 191, 250, 0.7);
   }
 
   70% {
-    box-shadow: 0 0 0 10px rgba(247, 233, 135, 0);
+    box-shadow: 0 0 0 10px rgba(163, 191, 250, 0);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(247, 233, 135, 0);
+    box-shadow: 0 0 0 0 rgba(163, 191, 250, 0);
   }
 }
 
 /* 导航栏音乐控制按钮样式 */
 .nav-music-control {
   margin-right: 15px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-music-btn {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(163, 191, 250, 0.2);
-  border: 1px solid var(--primary);
-  color: var(--accent);
-  font-size: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--primary);
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
+  outline: none;
 }
 
 .nav-music-btn:hover {
   transform: scale(1.1);
-  background: rgba(163, 191, 250, 0.4);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .nav-music-btn.playing {
-  color: var(--secondary);
-  animation: navPulse 2s infinite;
-}
-
-@keyframes navPulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(247, 233, 135, 0.3);
-  }
-
-  70% {
-    box-shadow: 0 0 0 5px rgba(247, 233, 135, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(247, 233, 135, 0);
-  }
+  animation: pulse 2s infinite;
 }
 
 /* 调整语言切换按钮与音乐按钮的布局 */
@@ -1299,4 +1358,225 @@ nav ul {
 .language-switch {
   display: flex;
   align-items: center;
+}
+
+/* 空项目展示样式 */
+.empty-projects {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.empty-projects i {
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.empty-projects p {
+  font-size: 1.2rem;
+  color: var(--light-text);
+}
+
+/* 留言板样式 */
+.guestbook-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 40px 0;
+}
+
+.comment-form {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form h3 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--light-text);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(163, 191, 250, 0.3);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--light-text);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.comments-list {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.comments-list h3 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.comment-item {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(163, 191, 250, 0.2);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.comment-author {
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+.comment-date {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.comment-content {
+  line-height: 1.6;
+  color: var(--light-text);
+  white-space: pre-wrap;
+}
+
+.no-comments {
+  text-align: center;
+  padding: 30px;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .guestbook-container {
+    grid-template-columns: 1fr;
+  }
+
+  .comment-form,
+  .comments-list {
+    margin-bottom: 20px;
+  }
+}
+
+/* 确保只显示GitHub图标 */
+.social-icons a:not([href*="github"]) {
+  display: none;
+}
+
+/* 添加以下CSS规则来隐藏logo旁边的星星 */
+.logo::after,
+.logo-image+.star-icon,
+header .star-icon {
+  display: none !important;
+}
+
+/* 在英文模式下调整一些元素的宽度 */
+[lang="en"] .nav-item {
+  white-space: nowrap;
+}
+
+/* 确保导航栏在英文模式下有足够空间 */
+@media (max-width: 992px) {
+  nav ul li {
+    margin: 0 8px;
+  }
+
+  [lang="en"] nav ul li {
+    margin: 0 5px;
+  }
+}
+
+/* 处理英文长词自动换行 */
+[lang="en"] p,
+[lang="en"] h1,
+[lang="en"] h2,
+[lang="en"] h3 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* 添加到style.css文件 */
+.footer-section p .fas+a,
+.footer-section p .fas+span {
+  text-transform: lowercase;
+}
+
+/* 页面过渡动画 - 使用与网站相同的背景样式 */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+
+  /* 复制body的背景样式 */
+  background-color: var(--background);
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(168, 216, 234, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(252, 186, 211, 0.1) 0%, transparent 25%);
+}
+
+/* 添加星星背景到过渡层 */
+.page-transition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-opacity='0.1'%3E%3Ccircle cx='400' cy='400' r='1'/%3E%3Ccircle cx='500' cy='100' r='1'/%3E%3Ccircle cx='700' cy='300' r='1'/%3E%3Ccircle cx='100' cy='200' r='1'/%3E%3Ccircle cx='200' cy='700' r='1'/%3E%3Ccircle cx='300' cy='500' r='1'/%3E%3Ccircle cx='600' cy='600' r='1'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.page-transition.transition-out {
+  opacity: 0;
+}
+
+/* 确保所有页面元素有淡入效果 */
+body>header,
+body>section,
+body>footer {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

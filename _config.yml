@@ -15,9 +15,8 @@ navigation:
 
 # 社交媒体链接
 social:
-  github: your-github-username
-  twitter: your-twitter-username
-  linkedin: your-linkedin-username
+  github: eclipseyes
+
 
 # 其他设置
 markdown: kramdown

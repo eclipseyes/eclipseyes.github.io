@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>博客 - 我的个人网站</title>
+  <title>学习分享 - Eclipseyes</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* 博客页面特定样式 */
     .blog-container {
       padding: 80px 0;
     }
-    
+
     .blog-grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
       gap: 40px;
     }
-    
+
     .blog-posts {
       display: flex;
       flex-direction: column;
       gap: 30px;
     }
-    
+
     .blog-post {
       background-color: white;
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
-    
+
     .blog-post img {
       width: 100%;
       height: 300px;
       object-fit: cover;
     }
-    
+
     .blog-post-content {
       padding: 30px;
     }
-    
+
     .blog-post-meta {
       display: flex;
       align-items: center;
@@ -48,105 +50,105 @@
       color: #666;
       font-size: 0.9rem;
     }
-    
+
     .blog-post-meta span {
       margin-right: 20px;
       display: flex;
       align-items: center;
     }
-    
+
     .blog-post-meta i {
       margin-right: 5px;
     }
-    
+
     .blog-post h3 {
       margin-bottom: 15px;
       font-size: 1.5rem;
     }
-    
+
     .blog-post p {
       margin-bottom: 20px;
       color: #555;
     }
-    
+
     .blog-sidebar {
       display: flex;
       flex-direction: column;
       gap: 30px;
     }
-    
+
     .sidebar-section {
       background-color: white;
       padding: 25px;
       border-radius: 8px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
-    
+
     .sidebar-section h3 {
       margin-bottom: 20px;
       font-size: 1.3rem;
       padding-bottom: 10px;
       border-bottom: 1px solid #eee;
     }
-    
+
     .recent-posts-list {
       display: flex;
       flex-direction: column;
       gap: 15px;
     }
-    
+
     .recent-post-item {
       display: flex;
       gap: 15px;
     }
-    
+
     .recent-post-item img {
       width: 60px;
       height: 60px;
       object-fit: cover;
       border-radius: 4px;
     }
-    
+
     .recent-post-info h4 {
       font-size: 1rem;
       margin-bottom: 5px;
     }
-    
+
     .recent-post-info span {
       font-size: 0.8rem;
       color: #666;
     }
-    
+
     .categories-list li {
       margin-bottom: 10px;
       padding-bottom: 10px;
       border-bottom: 1px solid #eee;
     }
-    
+
     .categories-list li:last-child {
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
     }
-    
+
     .categories-list a {
       display: flex;
       justify-content: space-between;
     }
-    
+
     .categories-list span {
       background-color: #f0f0f0;
       padding: 2px 8px;
       border-radius: 10px;
       font-size: 0.8rem;
     }
-    
+
     .tags-list {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
-    
+
     .tags-list a {
       background-color: #f0f0f0;
       padding: 5px 10px;
@@ -155,12 +157,12 @@
       color: #555;
       transition: background-color 0.3s;
     }
-    
+
     .tags-list a:hover {
       background-color: #007bff;
       color: white;
     }
-    
+
     /* 响应式设计 */
     @media (max-width: 768px) {
       .blog-grid {
@@ -169,140 +171,80 @@
     }
   </style>
 </head>
+
 <body>
+  <!-- 背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/firefly-lying-in-the-water-honkai-star-rail-moewalls-com.mp4" type="video/mp4">
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
+  <!-- 在body开头添加背景音乐 -->
+  <audio id="bgMusic" loop preload="auto" controlsList="nodownload">
+    <source src="music/05-VEED.mp3" type="audio/mpeg">
+    <!-- 提供备用格式可能有助于兼容性 -->
+    <source src="music/05-VEED.ogg" type="audio/ogg">
+    您的浏览器不支持音频元素。
+  </audio>
+
+  <!-- 太空元素 -->
+  <div class="moon"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
   <header>
     <div class="container">
-      <h1 class="logo">我的网站</h1>
+      <div class="nav-music-control">
+        <button id="navMusicToggle" class="nav-music-btn">
+          <i class="fas fa-music"></i>
+        </button>
+      </div>
+      <h1 class="logo">
+        <img src="logo/preview.png" alt="Eclipseyes" class="logo-image">
+      </h1>
       <nav>
         <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="about.html">关于我</a></li>
-          <li><a href="projects.html">项目展示</a></li>
-          <li><a href="blog.html" class="active">博客</a></li>
-          <li><a href="contact.html">联系方式</a></li>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
+          <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
+          <li><a href="about.html" class="active" data-lang-key="about">关于我</a></li>
         </ul>
       </nav>
+      <div class="language-switch">
+        <button id="zh-btn" class="lang-btn active">中</button>
+        <button id="en-btn" class="lang-btn">EN</button>
+      </div>
     </div>
   </header>
 
   <section class="page-header">
     <div class="container">
-      <h2>博客文章</h2>
+      <h2 data-lang-key="blog">学习分享</h2>
     </div>
   </section>
 
-  <section class="blog-container">
+  <section class="blog-content">
     <div class="container">
-      <div class="blog-grid">
-        <div class="blog-posts">
-          <article class="blog-post">
-            <img src="images/blog1.jpg" alt="博客文章1">
-            <div class="blog-post-content">
-              <div class="blog-post-meta">
-                <span><i class="far fa-calendar"></i> 2023年10月15日</span>
-                <span><i class="far fa-user"></i> 管理员</span>
-                <span><i class="far fa-folder"></i> 网站开发</span>
-              </div>
-              <h3>响应式网站设计的最佳实践</h3>
-              <p>在当今移动设备普及的时代，响应式网站设计变得尤为重要。本文将探讨响应式设计的核心原则和最佳实践，帮助您创建在各种设备上都能完美展示的网站。</p>
-              <a href="#" class="btn-small">阅读更多</a>
-            </div>
-          </article>
-          
-          <article class="blog-post">
-            <img src="images/blog2.jpg" alt="博客文章2">
-            <div class="blog-post-content">
-              <div class="blog-post-meta">
-                <span><i class="far fa-calendar"></i> 2023年10月8日</span>
-                <span><i class="far fa-user"></i> 管理员</span>
-                <span><i class="far fa-folder"></i> 前端开发</span>
-              </div>
-              <h3>JavaScript框架比较：React vs Vue vs Angular</h3>
-              <p>前端开发领域的三大主流框架各有优缺点。本文将对React、Vue和Angular进行深入比较，帮助开发者根据项目需求选择最合适的框架。</p>
-              <a href="#" class="btn-small">阅读更多</a>
-            </div>
-          </article>
-          
-          <article class="blog-post">
-            <img src="images/blog3.jpg" alt="博客文章3">
-            <div class="blog-post-content">
-              <div class="blog-post-meta">
-                <span><i class="far fa-calendar"></i> 2023年10月1日</span>
-                <span><i class="far fa-user"></i> 管理员</span>
-                <span><i class="far fa-folder"></i> 后端开发</span>
-              </div>
-              <h3>Node.js与Python后端开发对比</h3>
-              <p>Node.js和Python是两种流行的后端开发技术。本文将从性能、生态系统、适用场景等多个角度对这两种技术进行对比，帮助开发者做出明智的技术选择。</p>
-              <a href="#" class="btn-small">阅读更多</a>
-            </div>
-          </article>
-        </div>
-        
-        <div class="blog-sidebar">
-          <div class="sidebar-section">
-            <h3>搜索</h3>
-            <form class="search-form">
-              <div class="form-group">
-                <input type="text" placeholder="搜索文章...">
-              </div>
-              <button type="submit" class="btn-small">搜索</button>
-            </form>
-          </div>
-          
-          <div class="sidebar-section">
-            <h3>最近文章</h3>
-            <div class="recent-posts-list">
-              <div class="recent-post-item">
-                <img src="images/blog1.jpg" alt="最近文章1">
-                <div class="recent-post-info">
-                  <h4><a href="#">响应式网站设计的最佳实践</a></h4>
-                  <span>2023年10月15日</span>
-                </div>
-              </div>
-              <div class="recent-post-item">
-                <img src="images/blog2.jpg" alt="最近文章2">
-                <div class="recent-post-info">
-                  <h4><a href="#">JavaScript框架比较</a></h4>
-                  <span>2023年10月8日</span>
-                </div>
-              </div>
-              <div class="recent-post-item">
-                <img src="images/blog3.jpg" alt="最近文章3">
-                <div class="recent-post-info">
-                  <h4><a href="#">Node.js与Python后端开发对比</a></h4>
-                  <span>2023年10月1日</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="sidebar-section">
-            <h3>分类</h3>
-            <ul class="categories-list">
-              <li><a href="#">网站开发 <span>5</span></a></li>
-              <li><a href="#">前端开发 <span>8</span></a></li>
-              <li><a href="#">后端开发 <span>3</span></a></li>
-              <li><a href="#">移动应用 <span>4</span></a></li>
-              <li><a href="#">UI/UX设计 <span>6</span></a></li>
-            </ul>
-          </div>
-          
-          <div class="sidebar-section">
-            <h3>标签</h3>
-            <div class="tags-list">
-              <a href="#">HTML</a>
-              <a href="#">CSS</a>
-              <a href="#">JavaScript</a>
-              <a href="#">React</a>
-              <a href="#">Vue</a>
-              <a href="#">Node.js</a>
-              <a href="#">Python</a>
-              <a href="#">MongoDB</a>
-              <a href="#">响应式设计</a>
-              <a href="#">移动优先</a>
-            </div>
-          </div>
-        </div>
+      <!-- 清空所有文章 -->
+      <div class="empty-projects">
+        <i class="far fa-smile"></i>
+        <p data-lang-key="empty-notice">QwQ 等待上新哦~</p>
       </div>
     </div>
   </section>
@@ -311,21 +253,21 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>关于</h3>
-          <p>个人网站展示我的技能、项目和经验。</p>
+          <h3 data-lang-key="about">关于</h3>
+          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学生，研究兴趣是机器学习和大语言模型。</p>
         </div>
         <div class="footer-section">
-          <h3>快速链接</h3>
+          <h3 data-lang-key="quick-links">快速链接</h3>
           <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a href="about.html">关于我</a></li>
-            <li><a href="projects.html">项目</a></li>
-            <li><a href="contact.html">联系我</a></li>
+            <li><a href="index.html" data-lang-key="home">首页</a></li>
+            <li><a href="about.html" data-lang-key="about">关于我</a></li>
+            <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+            <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
           </ul>
         </div>
         <div class="footer-section">
-          <h3>联系方式</h3>
-          <p><i class="fas fa-envelope"></i> email@example.com</p>
+          <h3 data-lang-key="contact">留言板</h3>
+          <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
           <div class="social-icons">
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -334,11 +276,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 我的个人网站. 保留所有权利.</p>
+        <p>&copy; 2023 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
 </body>
-</html> 
+
+</html>
