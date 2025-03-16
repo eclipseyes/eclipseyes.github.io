@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人活动 - Eclipseyes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 太空元素 -->
+  <div class="planet one"></div>
+  <div class="planet two"></div>
+  <div class="moon"></div>
+  <script>
+    for(let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <header>
+    <div class="container">
+      <h1 class="logo">Eclipseyes</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="about.html" data-lang-key="about">关于我</a></li>
+          <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" data-lang-key="contact">联系方式</a></li>
+          <li><a href="activities.html" class="active" data-lang-key="activities">个人活动</a></li>
+        </ul>
+        <div class="language-switch">
+          <button id="zh-btn" class="active">中文</button>
+          <button id="en-btn">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 密码保护模态框 -->
+  <div id="passwordModal" class="password-modal">
+    <div class="password-container">
+      <h2 data-lang-key="password-title">这是一个受密码保护的页面</h2>
+      <input type="password" id="password" placeholder="请输入密码" data-lang-key="password-placeholder">
+      <button id="submitPassword" data-lang-key="submit">提交</button>
+      <p id="errorMessage" style="color: #FF9A8B; display: none;" data-lang-key="password-error">密码错误，请重试</p>
+    </div>
+  </div>
+
+  <!-- 隐藏内容区域 -->
+  <div id="hiddenContent" class="hidden-content">
+    <section class="page-header">
+      <div class="container">
+        <h2 data-lang-key="activities">个人活动</h2>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="activities-grid">
+        <div class="activity-card">
+          <h3>豆瓣读书</h3>
+          <div class="activity-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 100 150'%3E%3Crect width='100' height='150' fill='%23A8D8EA' fill-opacity='0.7'/%3E%3Crect x='10' y='10' width='80' height='20' fill='white' fill-opacity='0.8'/%3E%3Crect x='10' y='40' width='80' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='50' width='60' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='60' width='70' height='5' fill='white' fill-opacity='0.6'/%3E%3C/svg%3E" alt="最近阅读">
+            <div class="activity-info">
+              <h4>《深度学习》</h4>
+              <p>作者: Ian Goodfellow, Yoshua Bengio, Aaron Courville</p>
+              <p>评分: ★★★★★</p>
+              <p>读后感: 这本书对深度学习的理论讲解非常全面，特别是对数学基础的详细介绍对我很有帮助。</p>
+            </div>
+          </div>
+          <div class="activity-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 100 150'%3E%3Crect width='100' height='150' fill='%23FCBAD3' fill-opacity='0.7'/%3E%3Crect x='10' y='10' width='80' height='20' fill='white' fill-opacity='0.8'/%3E%3Crect x='10' y='40' width='80' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='50' width='60' height='5' fill='white' fill-opacity='0.6'/%3E%3Crect x='10' y='60' width='70' height='5' fill='white' fill-opacity='0.6'/%3E%3C/svg%3E" alt="最近阅读">
+            <div class="activity-info">
+              <h4>《三体》</h4>
+              <p>作者: 刘慈欣</p>
+              <p>评分: ★★★★★</p>
+              <p>读后感: 科幻小说的典范之作，对宇宙和文明发展的思考令人深思。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <h3>Hugging Face</h3>
+          <div class="activity-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23070A0F'/%3E%3Ccircle cx='50' cy='50' r='40' fill='%23FF9A8B' fill-opacity='0.7'/%3E%3Cpath d='M30,50 Q50,30 70,50 Q50,70 30,50' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E" alt="Hugging Face 项目">
+            <div class="activity-info">
+              <h4>BERT 文本分类模型</h4>
+              <p>贡献: 上传了一个针对中文文本分类的微调BERT模型</p>
+              <p>点赞数: 32</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <h3>edX 课程</h3>
+          <div class="activity-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23070A0F'/%3E%3Cpath d='M20,50 L40,30 L60,50 L80,30' stroke='%23B5EAD7' stroke-width='4' fill='none'/%3E%3Cpath d='M20,70 L40,50 L60,70 L80,50' stroke='%23B5EAD7' stroke-width='4' fill='none'/%3E%3C/svg%3E" alt="edX 课程">
+            <div class="activity-info">
+              <h4>CS50: Introduction to AI with Python</h4>
+              <p>完成时间: 2023年3月</p>
+              <p>评分: A</p>
+              <p>收获: 使用Python实现了多种AI算法，包括搜索、知识表示、神经网络等。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 data-lang-key="about">关于</h3>
+            <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学生，研究兴趣是机器学习和大语言模型。</p>
+          </div>
+          <div class="footer-section">
+            <h3 data-lang-key="quick-links">快速链接</h3>
+            <ul>
+              <li><a href="index.html" data-lang-key="home">首页</a></li>
+              <li><a href="about.html" data-lang-key="about">关于我</a></li>
+              <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+              <li><a href="contact.html" data-lang-key="contact">联系我</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 data-lang-key="contact">联系方式</h3>
+            <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
+  <script>
+    // 密码验证
+    document.addEventListener('DOMContentLoaded', function() {
+      const correctPassword = "Qy~:=.123dQy~?";
+      const passwordModal = document.getElementById('passwordModal');
+      const hiddenContent = document.getElementById('hiddenContent');
+      const submitBtn = document.getElementById('submitPassword');
+      const passwordInput = document.getElementById('password');
+      const errorMessage = document.getElementById('errorMessage');
+      
+      // 检查是否已经验证过密码
+      const isAuthenticated = sessionStorage.getItem('authenticated') === 'true';
+      if (isAuthenticated) {
+        passwordModal.style.display = 'none';
+        hiddenContent.style.display = 'block';
+      }
+      
+      submitBtn.addEventListener('click', checkPassword);
+      passwordInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          checkPassword();
+        }
+      });
+      
+      function checkPassword() {
+        if (passwordInput.value === correctPassword) {
+          // 密码正确
+          passwordModal.style.display = 'none';
+          hiddenContent.style.display = 'block';
+          // 保存验证状态到会话
+          sessionStorage.setItem('authenticated', 'true');
+          
+          // 添加进入动画
+          const elements = document.querySelectorAll('.activity-card, .activity-item');
+          elements.forEach((element, index) => {
+            element.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`;
+            element.style.opacity = '0';
+          });
+        } else {
+          // 密码错误
+          errorMessage.style.display = 'block';
+          passwordInput.value = '';
+          // 添加抖动动画
+          passwordInput.classList.add('shake');
+          setTimeout(() => {
+            passwordInput.classList.remove('shake');
+          }, 500);
+        }
+      }
+    });
+  </script>
+</body>
+</html> 
