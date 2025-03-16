@@ -23,16 +23,13 @@
 
   <!-- 在body开头添加背景音乐 -->
   <audio id="bgMusic" loop preload="auto" controlsList="nodownload">
-    <source src="music/05-VEED.mp3" type="audio/mpeg">
+    <source src="music/05-VEED(low).mp3" type="audio/mpeg">
     <!-- 提供备用格式可能有助于兼容性 -->
-    <source src="music/05-VEED.ogg" type="audio/ogg">
+    <source src="music/05-VEED(low).ogg" type="audio/ogg">
     您的浏览器不支持音频元素。
   </audio>
 
-  <!-- 太空元素 -->
-  <div class="planet one"></div>
-  <div class="planet two"></div>
-  <div class="moon"></div>
+
   <!-- 动态生成星星 -->
   <script>
     for (let i = 0; i < 100; i++) {
@@ -44,6 +41,16 @@
       document.body.appendChild(star);
     }
   </script>
+
+  <!-- 添加流星容器 -->
+  <div class="meteor-container">
+    <div class="meteor meteor-1"></div>
+    <div class="meteor meteor-2"></div>
+    <div class="meteor meteor-3"></div>
+    <div class="meteor meteor-4"></div>
+    <div class="meteor meteor-5"></div>
+    <div class="meteor meteor-6"></div>
+  </div>
 
   <header>
     <div class="container">
@@ -132,7 +139,7 @@
       <div class="footer-content">
         <div class="footer-section">
           <h3 data-lang-key="about">关于</h3>
-          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学生，研究兴趣是机器学习和大语言模型。</p>
+          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学习～</p>
         </div>
         <div class="footer-section">
           <h3 data-lang-key="quick-links">快速链接</h3>

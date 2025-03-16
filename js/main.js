@@ -1,4 +1,3 @@
-// 当文档加载完成后执行
 document.addEventListener('DOMContentLoaded', function () {
   // 平滑滚动
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -175,44 +174,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // 可以在这里添加字体加载后的特殊处理
   });
 
-  // 添加页面过渡动画功能
-  // 创建过渡遮罩层
-  const transitionElement = document.createElement('div');
-  transitionElement.className = 'page-transition';
-  document.body.appendChild(transitionElement);
-
-  // 页面加载完成后，移除过渡遮罩
-  setTimeout(() => {
-    transitionElement.classList.add('transition-out');
-    setTimeout(() => {
-      transitionElement.style.display = 'none';
-    }, 500);
-  }, 100);
-
-  // 给所有导航链接添加点击事件
-  document.querySelectorAll('nav a').forEach(link => {
-    // 跳过当前页面的链接
-    if (link.classList.contains('active')) return;
-
-    link.addEventListener('click', function (e) {
-      // 如果是同一页面，不执行过渡动画
-      if (this.getAttribute('href') === window.location.pathname.split('/').pop()) {
-        return;
-      }
-
-      e.preventDefault();
-      const target = this.getAttribute('href');
-
-      // 显示过渡遮罩
-      transitionElement.style.display = 'block';
-      transitionElement.classList.remove('transition-out');
-
-      // 等待动画完成后再跳转
-      setTimeout(() => {
-        window.location.href = target;
-      }, 400);
-    });
-  });
+  // 完全重写页面过渡动画功能
+  setupPageTransition();
 });
 
 // 添加页面切换动画 - 仅淡化内容，保留背景
@@ -721,4 +684,134 @@ function setupNavMusicControl() {
       }, 1000);
     }
   }
-} 
+}
+
+// 优化音乐控制系统，确保页面切换时音乐连续播放
+function enhanceMusicControl() {
+  const bgMusic = document.getElementById('bgMusic');
+  const navMusicToggle = document.getElementById('navMusicToggle');
+  
+  if (bgMusic && navMusicToggle) {
+    // 获取保存的音乐状态和播放位置
+    const musicPlaying = localStorage.getItem('musicPlaying') === 'true';
+    const musicPosition = parseFloat(localStorage.getItem('musicPosition') || '0');
+    const musicVolume = parseFloat(localStorage.getItem('musicVolume') || '1');
+    
+    // 设置音量和播放位置
+    bgMusic.volume = musicVolume;
+    bgMusic.currentTime = musicPosition;
+    
+    // 更新UI状态
+    if (musicPlaying) {
+      navMusicToggle.classList.add('playing');
+      
+      // 特别处理: 在过渡动画结束后立即播放音乐以避免卡顿
+      const playAfterTransition = () => {
+        bgMusic.play().catch(e => {
+          console.log('自动播放失败，等待用户交互');
+        });
+      };
+      
+      // 检查是否有过渡动画正在进行
+      const transitionElement = document.querySelector('.page-transition');
+      if (transitionElement && !transitionElement.classList.contains('transition-out')) {
+        // 等待过渡结束后再播放
+        setTimeout(playAfterTransition, 600);
+      } else {
+        // 立即尝试播放
+        playAfterTransition();
+      }
+    }
+    
+    // 使用有记忆功能的音乐控制器
+    navMusicToggle.onclick = function() {
+      if (bgMusic.paused) {
+        bgMusic.play()
+          .then(() => {
+            this.classList.add('playing');
+            localStorage.setItem('musicPlaying', 'true');
+          })
+          .catch(e => {
+            console.error('播放失败:', e);
+          });
+      } else {
+        bgMusic.pause();
+        this.classList.remove('playing');
+        localStorage.setItem('musicPlaying', 'false');
+        // 保存暂停时的位置
+        localStorage.setItem('musicPosition', bgMusic.currentTime.toString());
+      }
+    };
+    
+    // 每秒保存播放位置，确保在页面切换时能够准确恢复
+    const saveInterval = setInterval(() => {
+      if (!bgMusic.paused) {
+        localStorage.setItem('musicPosition', bgMusic.currentTime.toString());
+      }
+    }, 1000);
+    
+    // 页面关闭前保存最终状态
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('musicPosition', bgMusic.currentTime.toString());
+      localStorage.setItem('musicVolume', bgMusic.volume.toString());
+      clearInterval(saveInterval);
+    });
+  }
+}
+
+// 修改页面过渡功能，确保音乐播放不中断
+function setupPageTransition() {
+  // 创建纯黑色星空背景过渡层
+  const transitionElement = document.createElement('div');
+  transitionElement.className = 'page-transition';
+  document.body.appendChild(transitionElement);
+  
+  // 页面加载完成后处理
+  setTimeout(() => {
+    // 淡出过渡层
+    transitionElement.classList.add('transition-out');
+    setTimeout(() => {
+      transitionElement.style.display = 'none';
+      
+      // 过渡结束后确保音乐播放正常
+      enhanceMusicControl();
+    }, 600);
+  }, 100);
+  
+  // 给所有导航链接添加点击事件
+  document.querySelectorAll('nav a').forEach(link => {
+    // 跳过当前页面的链接或外部链接
+    if (link.classList.contains('active') || 
+        link.getAttribute('href').startsWith('http') ||
+        link.getAttribute('href').startsWith('#')) {
+      return;
+    }
+    
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = this.getAttribute('href');
+      
+      // 在跳转前保存音乐状态
+      const bgMusic = document.getElementById('bgMusic');
+      if (bgMusic) {
+        localStorage.setItem('musicPosition', bgMusic.currentTime.toString());
+        localStorage.setItem('musicVolume', bgMusic.volume.toString());
+      }
+      
+      // 显示过渡遮罩
+      transitionElement.style.display = 'block';
+      transitionElement.classList.remove('transition-out');
+      
+      // 等待动画完成后再跳转
+      setTimeout(() => {
+        window.location.href = target;
+      }, 400);
+    });
+  });
+}
+
+// 初始化调用
+document.addEventListener('DOMContentLoaded', function() {
+  setupPageTransition();
+  // enhanceMusicControl 会由 setupPageTransition 调用
+}); 

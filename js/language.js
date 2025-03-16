@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'en': 'Recent Projects'
     },
     'about-desc': {
-      'zh': '我是邱月，华中科技大学计算机学院学生，研究兴趣是机器学习和大语言模型。',
+      'zh': '我是邱月，华中科技大学计算机学院学习～',
       'en': 'I am Yue Qiu, a computer science student at HUST. My research interests are machine learning and large language models.'
     },
     'quick-links': {
@@ -202,6 +202,38 @@ document.addEventListener('DOMContentLoaded', function () {
     'close-modal-hint': {
       'zh': '点击右上角关闭按钮可返回主页',
       'en': 'Click the close button in the top right to return to homepage'
+    },
+    'college-desc': {
+      'zh': '主修课程包括数据结构、算法设计、机器学习、计算机网络等。',
+      'en': 'Major courses include data structures, algorithm design, machine learning, computer networks, etc.'
+    },
+    'highschool-desc': {
+      'zh': '理科实验班，学习了物理、化学、生物等科学课程。',
+      'en': 'Science experimental class, studied physics, chemistry, biology and other science courses.'
+    },
+    'email-contact': {
+      'zh': '邮箱联系:',
+      'en': 'Email contact:'
+    },
+    'undergraduate': {
+      'zh': '本科在读',
+      'en': 'Undergraduate (Current)'
+    },
+    'hust': {
+      'zh': '华中科技大学',
+      'en': 'Huazhong University of Science and Technology'
+    },
+    'cs-major': {
+      'zh': '计算机科学与技术专业',
+      'en': 'Computer Science and Technology'
+    },
+    'nankai': {
+      'zh': '重庆南开中学',
+      'en': 'Chongqing Nankai Secondary School'
+    },
+    'high-school': {
+      'zh': '高中',
+      'en': 'High School'
     }
   };
 
