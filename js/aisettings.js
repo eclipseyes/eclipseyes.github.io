@@ -99,10 +99,11 @@ const BlogContentLoader = {
       let html = '<div class="blog-grid">';
 
       posts.forEach(post => {
+        const imageUrl = post.coverImage || '/blog/images/default-cover.jpg';
         html += `
           <div class="blog-card">
-            <div class="blog-card-image">
-              <img src="${post.coverImage || '/blog/images/default-cover.jpg'}" alt="${post.title}">
+            <div class="blog-card-image" style="--image-url: url('${imageUrl}')">
+              <img src="${imageUrl}" alt="${post.title}" onload="this.parentElement.style.setProperty('--image-url', 'url(' + this.src + ')')">
             </div>
             <div class="blog-card-content">
               <h3>${post.title}</h3>

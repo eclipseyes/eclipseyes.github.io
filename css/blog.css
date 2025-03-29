@@ -14,22 +14,32 @@
   width: 100%;
 }
 
-.blog-posts-container {
+/* 专门针对博客列表页面的容器 */
+#blogList .blog-posts-container {
   max-width: 1200px;
-  margin: 0;
-  padding: 0 0 0 100px;
+  margin: 0 auto;
+  padding: 0;
   width: 100%;
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
-/* 重置网格布局为单列居中 */
-.blog-grid {
+/* 只针对博客列表页面的网格布局 */
+#blogList .blog-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: 800px;
   gap: 30px;
   margin: 30px auto;
+}
+
+/* 调整博客卡片样式，但不影响文章页面 */
+#blogList .blog-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* 调整单个博客卡片 */
@@ -42,7 +52,6 @@
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
-  max-width: 800px;
 }
 
 .blog-card:hover {
@@ -50,16 +59,37 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* 修改图片区域 */
+/* 修改图片区域 - 添加模糊效果 */
 .blog-card-image {
   height: 300px;
+  position: relative;
   overflow: hidden;
 }
 
+/* 模糊背景层 */
+.blog-card-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-size: cover;
+  filter: blur(20px);
+  transform: scale(1.1); /* 稍微放大以避免边缘模糊效果 */
+  z-index: 1;
+  opacity: 0.7;
+  background-image: var(--image-url);
+}
+
+/* 主图片样式 */
 .blog-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 2;
   transition: transform 0.5s ease;
 }
 
@@ -359,8 +389,8 @@
 
 /* 调整大屏幕布局 */
 @media (min-width: 1400px) {
-  .blog-posts-container {
-    padding-left: calc(50% - 600px);
+  #blogList .blog-posts-container {
+    padding: 0;
   }
 
   #blogPost {
@@ -370,8 +400,8 @@
 
 /* 中等屏幕调整 */
 @media (min-width: 1100px) and (max-width: 1399px) {
-  .blog-posts-container {
-    padding-left: 50px;
+  #blogList .blog-posts-container {
+    padding: 0;
   }
 
   #blogPost {
@@ -381,7 +411,7 @@
 
 /* 小屏幕适配 */
 @media (max-width: 1099px) {
-  .blog-posts-container {
+  #blogList .blog-posts-container {
     padding: 0 20px;
   }
 
