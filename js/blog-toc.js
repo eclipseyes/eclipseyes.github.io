@@ -169,11 +169,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
     const tocElement = document.querySelector('.blog-toc');
     const articleElement = document.querySelector('.markdown-body');
-    
+
     if (!tocElement || !articleElement) return;
-    
+
     // 监听滚动事件
-    window.addEventListener('scroll', _.throttle(function() {
+    window.addEventListener('scroll', _.throttle(function () {
       // 获取文章底部位置
       const articleBottom = articleElement.getBoundingClientRect().bottom;
       // 获取视口高度
@@ -182,12 +182,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const tocHeight = tocElement.offsetHeight;
       // 目录底部应该在的位置（距离底部50px）
       const desiredTocBottom = viewportHeight - 50;
-      
+
       // 如果文章底部进入视口，且小于期望的目录底部位置
       if (articleBottom < desiredTocBottom) {
         // 计算目录应该固定的位置
         const bottomFixedTop = articleBottom - tocHeight;
-        
+
         // 添加底部固定类
         tocElement.classList.add('bottom-fixed');
         // 设置固定位置

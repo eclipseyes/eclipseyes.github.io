@@ -328,7 +328,8 @@
 .blog-toc.bottom-fixed {
   position: absolute;
   top: auto;
-  bottom: 50px; /* 距离文章底部的距离 */
+  bottom: 50px;
+  /* 距离文章底部的距离 */
 }
 
 /* Webkit浏览器（Chrome、Safari等）隐藏滚动条 */
