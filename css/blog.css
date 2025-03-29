@@ -1,0 +1,392 @@
+/* 博客页面专用样式 */
+.blog-container {
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 修改整个博客列表容器，强制居中 */
+.blog-content .container {
+  display: block;
+  width: 100%;
+}
+
+.blog-posts-container {
+  max-width: 1200px;
+  margin: 0;
+  padding: 0 0 0 100px;
+  width: 100%;
+  display: block;
+}
+
+/* 重置网格布局为单列居中 */
+.blog-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+  margin: 30px auto;
+}
+
+/* 调整单个博客卡片 */
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 800px;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* 修改图片区域 */
+.blog-card-image {
+  height: 300px;
+  overflow: hidden;
+}
+
+.blog-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-card-image img {
+  transform: scale(1.05);
+}
+
+.blog-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.blog-card-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  color: #333;
+}
+
+.blog-card-content p {
+  color: #666;
+  margin: 10px 0 15px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.blog-meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: #f5f5f5;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.read-more-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f4ff;
+  color: #4a6cf7;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-align: center;
+  margin-top: auto;
+}
+
+.read-more-btn:hover {
+  background: #e0e7ff;
+  transform: translateY(-2px);
+}
+
+/* 博客文章样式 */
+.blog-post {
+  display: none;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.blog-post h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post h2 {
+  font-size: 1.8rem;
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.blog-post h3 {
+  font-size: 1.4rem;
+  margin: 1.2rem 0 0.8rem;
+}
+
+.blog-post p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.blog-post img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.blog-post a:hover {
+  text-decoration: underline;
+}
+
+.blog-post .blog-meta-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.blog-post .date {
+  color: #666;
+  margin-right: 1rem;
+}
+
+.error-message {
+  color: #e53935;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+/* 响应式设计 */
+@media (max-width: 900px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .blog-grid {
+    max-width: 1300px;
+  }
+}
+
+/* 添加到博客样式表 */
+.markdown-body {
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  height: auto !important;
+  object-fit: contain;
+  margin: 20px auto;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.markdown-body img[src] {
+  min-height: auto;
+  background: none;
+}
+
+.markdown-body img[src*="large"] {
+  width: 100%;
+  max-height: none;
+}
+
+.markdown-body img[src*="small"] {
+  width: auto;
+  max-height: 300px;
+}
+
+.blog-meta-header {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.blog-post-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+/* 重置文章容器样式 - 确保在左侧显示 */
+#blogPost {
+  width: calc(100% - 400px);
+  max-width: 1000px;
+  margin: 0;
+  padding: 30px 40px;
+  background: white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+/* 目录样式 - 固定在右侧 */
+.blog-toc {
+  position: fixed;
+  right: 50px;
+  /* 固定在右侧 */
+  top: 240px;
+  width: 320px;
+  height: calc(100vh - 250px);
+  overflow-y: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px 20px;
+  z-index: 100;
+  font-size: 14px;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+/* Webkit浏览器（Chrome、Safari等）隐藏滚动条 */
+.blog-toc::-webkit-scrollbar {
+  display: none;
+}
+
+.blog-toc h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #4a6cf7;
+  padding-bottom: 10px;
+}
+
+/* 目录列表样式 */
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list li {
+  margin-bottom: 8px;
+}
+
+.toc-list a {
+  display: block;
+  color: #555;
+  text-decoration: none;
+  padding: 5px 8px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.toc-list a:hover {
+  color: #4a6cf7;
+  background: #f5f7fa;
+}
+
+.toc-list a.active {
+  color: #4a6cf7;
+  background: #f0f4ff;
+  border-left: 2px solid #4a6cf7;
+}
+
+/* 二级目录缩进 */
+.toc-list li.toc-h2 a {
+  padding-left: 20px;
+}
+
+/* 三级目录缩进 */
+.toc-list li.toc-h3 a {
+  padding-left: 35px;
+  font-size: 0.9em;
+}
+
+/* 文章内容样式 */
+.markdown-body {
+  max-width: 100%;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* 调整大屏幕布局 */
+@media (min-width: 1400px) {
+  .blog-posts-container {
+    padding-left: calc(50% - 600px);
+  }
+
+  #blogPost {
+    width: 1000px;
+  }
+}
+
+/* 中等屏幕调整 */
+@media (min-width: 1100px) and (max-width: 1399px) {
+  .blog-posts-container {
+    padding-left: 50px;
+  }
+
+  #blogPost {
+    width: calc(100% - 350px);
+  }
+}
+
+/* 小屏幕适配 */
+@media (max-width: 1099px) {
+  .blog-posts-container {
+    padding: 0 20px;
+  }
+
+  #blogPost {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

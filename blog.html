@@ -4,10 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>学习分享 - Eclipseyes</title>
+  <title>博客 - Eclipseyes</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.1.0/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <style>
     /* 博客页面特定样式 */
     .blog-container {
@@ -219,17 +225,17 @@
         <ul>
           <li><a href="index.html" data-lang-key="home">首页</a></li>
           <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
-          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="blog.html" data-lang-key="blog" class="active">学习分享</a></li>
           <li><a href="research.html" data-lang-key="research">研究成果</a></li>
           <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
           <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
-          <li><a href="about.html" class="active" data-lang-key="about">关于我</a></li>
+          <li><a href="about.html" data-lang-key="about">关于我</a></li>
         </ul>
+        <div class="language-switch">
+          <button id="zh-btn" class="lang-btn active">中</button>
+          <button id="en-btn" class="lang-btn">EN</button>
+        </div>
       </nav>
-      <div class="language-switch">
-        <button id="zh-btn" class="lang-btn active">中</button>
-        <button id="en-btn" class="lang-btn">EN</button>
-      </div>
     </div>
   </header>
 
@@ -241,10 +247,14 @@
 
   <section class="blog-content">
     <div class="container">
-      <!-- 清空所有文章 -->
-      <div class="empty-projects">
-        <i class="far fa-smile"></i>
-        <p data-lang-key="empty-notice">QwQ 等待上新哦~</p>
+      <div class="blog-posts-container">
+        <div id="blogList" class="blog-list">
+          <div class="loading">加载中...</div>
+        </div>
+      </div>
+
+      <div id="blogPost" class="blog-post">
+        <!-- 这里会通过JS动态加载博客内容 -->
       </div>
     </div>
   </section>
@@ -283,6 +293,9 @@
 
   <script src="js/main.js"></script>
   <script src="js/language.js"></script>
+  <script src="js/aisettings.js"></script>
+  <script src="js/debug.js"></script>
+  <script src="js/blog-toc.js"></script>
 </body>
 
 </html>
