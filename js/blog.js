@@ -1,14 +1,8 @@
 window.addEventListener('hashchange', function () {
-  // 如果是从文章返回列表
   if (location.hash === '' || location.hash === '#') {
-    document.getElementById('blogList').style.display = 'block';
-    document.getElementById('blogPost').style.display = 'none';
-    return;
-  }
-
-  // 如果是访问文章
-  if (location.hash.startsWith('#post/')) {
-    loadBlogPost();
+    switchToList();
+  } else if (location.hash.startsWith('#post/')) {
+    switchToPost();
   }
 });
 
@@ -119,9 +113,12 @@ function loadBlogPost() {
           }
         });
 
-      // 显示文章区域，隐藏列表区域
+      // 在显示文章内容前，确保列表已隐藏
       document.getElementById('blogList').style.display = 'none';
       document.getElementById('blogPost').style.display = 'block';
+
+      // 触发一次重排以刷新视图
+      document.body.offsetHeight;
 
       // 滚动到顶部
       window.scrollTo(0, 0);
@@ -169,4 +166,52 @@ function convertMarkdownToHtml(markdown) {
   html = html.replace(/<p><\/p>/g, '');
 
   return html;
+}
+
+// 修改页面切换函数
+function switchToList() {
+  // 先将文章页面淡出
+  const blogPost = document.getElementById('blogPost');
+  blogPost.style.opacity = '0';
+
+  // 等待淡出完成后隐藏文章页面并显示列表
+  setTimeout(() => {
+    blogPost.style.display = 'none';
+
+    const blogList = document.getElementById('blogList');
+    blogList.style.display = 'block';
+
+    // 强制重排
+    document.body.offsetHeight;
+
+    // 淡入列表
+    setTimeout(() => {
+      blogList.style.opacity = '1';
+    }, 10);
+  }, 300);
+}
+
+function switchToPost() {
+  // 先将列表页面淡出
+  const blogList = document.getElementById('blogList');
+  blogList.style.opacity = '0';
+
+  // 等待淡出完成后隐藏列表页面并显示文章
+  setTimeout(() => {
+    blogList.style.display = 'none';
+
+    const blogPost = document.getElementById('blogPost');
+    blogPost.style.display = 'block';
+
+    // 强制重排
+    document.body.offsetHeight;
+
+    // 淡入文章
+    setTimeout(() => {
+      blogPost.style.opacity = '1';
+    }, 10);
+
+    // 加载文章内容
+    loadBlogPost();
+  }, 300);
 }

@@ -221,6 +221,9 @@ const BlogContentLoader = {
     setTimeout(() => {
       this.renderBlogList(listContainerId);
     }, 50);
+
+    // 处理背景视频
+    this.handleBackgroundVideo(false);
   },
 
   // 显示博客文章
@@ -245,6 +248,9 @@ const BlogContentLoader = {
     listContainer.style.display = 'none';
     postContainer.style.display = 'block';
     this.renderBlogPost(postId, postContainerId);
+
+    // 处理背景视频
+    this.handleBackgroundVideo(true);
   },
 
   // 监听 URL 哈希变化，切换博客列表和文章
@@ -324,6 +330,57 @@ const BlogContentLoader = {
         img.src = src.replace('../images/', '/blog/images/');
       }
     });
+  },
+
+  // 修改背景视频处理方法
+  handleBackgroundVideo: function (isShowingPost) {
+    // 获取所有背景视频元素
+    const bgVideos = document.querySelectorAll('.background-video, video');
+
+    if (bgVideos.length === 0) return;
+
+    // 处理所有找到的视频
+    bgVideos.forEach(video => {
+      if (isShowingPost) {
+        // 文章页面时，暂停视频并降低不透明度
+        video.style.opacity = '0.2';
+
+        // 添加模糊效果使内容更易读
+        video.style.filter = 'blur(5px)';
+
+        // 降低亮度
+        video.style.brightness = '0.7';
+
+        // 如果是真正的视频元素，考虑暂停它
+        if (video.tagName === 'VIDEO') {
+          // 保存当前播放状态
+          video._wasPlaying = !video.paused;
+
+          // 降低音量
+          video.volume = 0.1;
+        }
+      } else {
+        // 列表页面时恢复视频
+        video.style.opacity = '1';
+        video.style.filter = 'none';
+        video.style.brightness = '1';
+
+        // 如果是真正的视频元素，恢复播放
+        if (video.tagName === 'VIDEO' && video._wasPlaying) {
+          video.volume = 1;
+          video.play().catch(e => {
+            console.log('自动播放被阻止，这在某些浏览器中是正常的');
+          });
+        }
+      }
+    });
+
+    // 添加或移除页面类，用于CSS控制
+    if (isShowingPost) {
+      document.body.classList.add('showing-post');
+    } else {
+      document.body.classList.remove('showing-post');
+    }
   }
 };
 

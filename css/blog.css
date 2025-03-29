@@ -77,7 +77,8 @@
   background-position: center;
   background-size: cover;
   filter: blur(20px);
-  transform: scale(1.1); /* 稍微放大以避免边缘模糊效果 */
+  transform: scale(1.1);
+  /* 稍微放大以避免边缘模糊效果 */
   z-index: 1;
   opacity: 0.7;
   background-image: var(--image-url);
@@ -308,10 +309,9 @@
 .blog-toc {
   position: fixed;
   right: 50px;
-  /* 固定在右侧 */
-  top: 240px;
+  top: 220px;
   width: 320px;
-  height: calc(100vh - 250px);
+  height: calc(100vh - 320px);
   overflow-y: auto;
   background: white;
   border-radius: 8px;
@@ -320,9 +320,15 @@
   z-index: 100;
   font-size: 14px;
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE and Edge */
+  transition: top 0.3s ease;
+}
+
+/* 添加目录底部固定样式 */
+.blog-toc.bottom-fixed {
+  position: absolute;
+  top: auto;
+  bottom: 50px; /* 距离文章底部的距离 */
 }
 
 /* Webkit浏览器（Chrome、Safari等）隐藏滚动条 */
@@ -353,9 +359,11 @@
   display: block;
   color: #555;
   text-decoration: none;
-  padding: 5px 8px;
+  padding: 8px 10px;
   border-left: 2px solid transparent;
   transition: all 0.2s;
+  position: relative;
+  z-index: 2;
 }
 
 .toc-list a:hover {
@@ -419,4 +427,106 @@
     width: 100%;
     margin: 0 auto;
   }
+}
+
+/* 添加页面切换效果 */
+body.showing-post .background-video,
+body.showing-post video {
+  transition: opacity 0.5s ease, filter 0.5s ease;
+  will-change: opacity, filter;
+}
+
+/* 确保内容区域在视频上方 */
+#blogList,
+#blogPost {
+  position: relative;
+  z-index: 10;
+}
+
+/* 防止视频重叠 */
+.background-video,
+video {
+  position: fixed !important;
+  z-index: 1;
+}
+
+/* 添加页面切换过渡效果 */
+#blogList,
+#blogPost {
+  transition: opacity 0.3s ease;
+}
+
+/* 隐藏时完全不可见 */
+#blogList[style*="display: none"],
+#blogPost[style*="display: none"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 显示时淡入 */
+#blogList:not([style*="display: none"]),
+#blogPost:not([style*="display: none"]) {
+  opacity: 1;
+}
+
+/* 增强目录交互体验 */
+.markdown-body h1.highlight,
+.markdown-body h2.highlight,
+.markdown-body h3.highlight,
+.markdown-body h4.highlight,
+.markdown-body h5.highlight,
+.markdown-body h6.highlight {
+  animation: highlight-pulse 2s ease-in-out;
+  scroll-margin-top: 100px;
+  /* 关键属性：确保滚动到标题时有足够的上边距 */
+}
+
+@keyframes highlight-pulse {
+  0% {
+    background-color: transparent;
+  }
+
+  30% {
+    background-color: rgba(74, 108, 247, 0.1);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* 改进目录点击区域 */
+.toc-list a {
+  display: block;
+  color: #555;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.toc-list a:hover {
+  color: #4a6cf7;
+  background-color: rgba(74, 108, 247, 0.05);
+}
+
+.toc-list a.active {
+  color: #4a6cf7;
+  background-color: rgba(74, 108, 247, 0.1);
+  border-left: 2px solid #4a6cf7;
+  font-weight: 500;
+}
+
+/* 确保所有标题有足够的上边距，防止被固定导航栏遮挡 */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  scroll-margin-top: 100px;
+  padding-top: 15px;
 }
