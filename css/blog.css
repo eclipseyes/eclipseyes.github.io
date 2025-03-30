@@ -317,11 +317,12 @@
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   padding: 25px 20px;
+  padding-top: 40px; /* 为按钮留出空间 */
   z-index: 100;
   font-size: 14px;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  transition: top 0.3s ease;
+  transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
 /* 添加目录底部固定样式 */
@@ -530,4 +531,72 @@ video {
 .markdown-body h6 {
   scroll-margin-top: 100px;
   padding-top: 15px;
+}
+
+/* 目录切换按钮样式 */
+.toc-toggle-btn {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  background: #4a6cf7;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* 提高z-index确保按钮在最上层 */
+  transition: all 0.3s ease;
+}
+
+/* 目录显示时按钮位置 */
+.toc-toggle-btn:not(.toc-hidden) {
+  right: 60px; /* 固定位置，不依赖于目录位置计算 */
+  top: 220px;
+}
+
+/* 目录隐藏时按钮位置 */
+.toc-toggle-btn.toc-hidden {
+  right: 20px;
+  top: 180px;
+  background: rgba(74, 108, 247, 0.9);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 确保目录隐藏状态正确 */
+.blog-toc.hidden {
+  transform: translateX(calc(100% + 50px));
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden; /* 添加visibility属性确保完全隐藏 */
+}
+
+/* 按钮悬停效果 */
+.toc-toggle-btn:hover {
+  background: #3a5ce6;
+  transform: scale(1.05);
+}
+
+/* 图标效果 */
+.toc-toggle-btn.toc-hidden i {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 目录过渡效果 */
+.blog-toc {
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .blog-toc {
+    width: 80%;
+    right: 10px;
+  }
+  
+  .toc-toggle-btn {
+    top: 80px;
+  }
 }

@@ -11,6 +11,27 @@ document.addEventListener('DOMContentLoaded', function () {
   // 如果URL中包含文章ID，则加载文章
   if (location.hash.startsWith('#post/')) {
     loadBlogPost();
+    
+    // 确保目录和按钮正确加载
+    setTimeout(function() {
+      // 检查目录是否存在
+      const tocElement = document.querySelector('.blog-toc');
+      if (!tocElement) {
+        console.log('目录不存在，尝试生成');
+        if (typeof window.BlogTOC !== 'undefined' && typeof window.BlogTOC.generate === 'function') {
+          window.BlogTOC.generate();
+        }
+      }
+      
+      // 检查按钮是否存在
+      const tocBtn = document.querySelector('.toc-toggle-btn');
+      if (!tocBtn && tocElement) {
+        console.log('目录存在但按钮不存在，添加按钮');
+        if (typeof window.BlogTOC !== 'undefined' && typeof window.BlogTOC.addTocToggleButton === 'function') {
+          window.BlogTOC.addTocToggleButton();
+        }
+      }
+    }, 1500);
   } else {
     // 否则加载博客列表
     loadBlogList();

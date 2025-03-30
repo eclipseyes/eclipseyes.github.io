@@ -103,6 +103,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 在目录生成完成后设置底部固定功能
     setupTocBottomFixing();
+
+    // 在目录生成完成后添加切换按钮
+    addTocToggleButton();
   }
 
   // 更新当前激活的目录项
@@ -169,6 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 获取相关元素
     const tocElement = document.querySelector('.blog-toc');
     const articleElement = document.querySelector('.markdown-body');
+    const toggleBtn = document.querySelector('.toc-toggle-btn');
 
     if (!tocElement || !articleElement) return;
 
@@ -192,12 +196,100 @@ document.addEventListener('DOMContentLoaded', function () {
         tocElement.classList.add('bottom-fixed');
         // 设置固定位置
         tocElement.style.top = `${bottomFixedTop}px`;
+        
+        // 更新按钮位置
+        if (toggleBtn && !tocElement.classList.contains('hidden')) {
+          updateButtonPosition(toggleBtn, tocElement, false);
+        }
       } else {
         // 移除底部固定类，恢复正常定位
         tocElement.classList.remove('bottom-fixed');
         tocElement.style.top = '220px'; // 恢复默认顶部位置
+        
+        // 恢复按钮位置
+        if (toggleBtn && !tocElement.classList.contains('hidden')) {
+          updateButtonPosition(toggleBtn, tocElement, false);
+        }
       }
     }, 100));
+  }
+
+  // 修改目录切换按钮函数
+  function addTocToggleButton() {
+    console.log('添加目录切换按钮');
+    
+    // 如果已存在按钮，则移除重新添加
+    const existingBtn = document.querySelector('.toc-toggle-btn');
+    if (existingBtn) existingBtn.remove();
+    
+    // 获取目录元素
+    const tocElement = document.querySelector('.blog-toc');
+    if (!tocElement) {
+      console.error('未找到目录元素，无法添加切换按钮');
+      return;
+    }
+    
+    console.log('找到目录元素，添加切换按钮');
+    
+    // 创建切换按钮
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'toc-toggle-btn';
+    toggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    toggleBtn.setAttribute('aria-label', '显示/隐藏目录');
+    toggleBtn.setAttribute('title', '显示/隐藏目录');
+    
+    // 从localStorage获取目录显示状态
+    const isTocHidden = localStorage.getItem('tocHidden') === 'true';
+    
+    // 应用初始状态
+    if (isTocHidden) {
+      tocElement.classList.add('hidden');
+      toggleBtn.classList.add('toc-hidden');
+      toggleBtn.innerHTML = '<i class="fas fa-eye"></i>';
+    }
+    
+    // 添加按钮到body
+    document.body.appendChild(toggleBtn);
+    
+    // 绑定点击事件
+    toggleBtn.addEventListener('click', function(e) {
+      console.log('目录切换按钮被点击');
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // 切换目录显示状态
+      tocElement.classList.toggle('hidden');
+      
+      // 更新按钮状态
+      const isNowHidden = tocElement.classList.contains('hidden');
+      toggleBtn.classList.toggle('toc-hidden', isNowHidden);
+      
+      // 切换图标
+      toggleBtn.innerHTML = isNowHidden 
+        ? '<i class="fas fa-eye"></i>' 
+        : '<i class="fas fa-eye-slash"></i>';
+      
+      // 保存状态到localStorage
+      localStorage.setItem('tocHidden', isNowHidden);
+      
+      console.log('目录隐藏状态:', isNowHidden);
+    });
+    
+    console.log('目录切换按钮添加完成，初始隐藏状态:', isTocHidden);
+  }
+
+  // 更新按钮位置函数
+  function updateButtonPosition(button, tocElement, isHidden) {
+    if (isHidden) {
+      // 隐藏状态下的位置
+      button.style.right = '20px';
+      button.style.top = '180px';
+    } else {
+      // 显示状态下，固定在目录右上角
+      const tocRect = tocElement.getBoundingClientRect();
+      button.style.right = (window.innerWidth - tocRect.right + 10) + 'px';
+      button.style.top = (tocRect.top + 10) + 'px';
+    }
   }
 
   // 博客文章渲染完成后生成目录
@@ -205,8 +297,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.location.hash.startsWith('#post/')) {
       setTimeout(() => {
         generateTableOfContents();
-        setupTocBottomFixing(); // 确保设置了底部固定
+        setupTocBottomFixing();
+        addTocToggleButton(); // 确保按钮被添加
       }, 800);
+    } else {
+      // 如果不是文章页面，移除目录和切换按钮
+      const toc = document.querySelector('.blog-toc');
+      const tocBtn = document.querySelector('.toc-toggle-btn');
+      if (toc) toc.remove();
+      if (tocBtn) tocBtn.remove();
     }
   }
 
@@ -231,6 +330,17 @@ document.addEventListener('DOMContentLoaded', function () {
   // 导出函数供其他模块使用
   window.BlogTOC = {
     generate: generateTableOfContents,
-    update: updateActiveHeading
+    update: updateActiveHeading,
+    addTocToggleButton: addTocToggleButton,
+    updateButtonPosition: updateButtonPosition
   };
+
+  // 添加键盘快捷键支持
+  document.addEventListener('keydown', function(e) {
+    // Alt+T 切换目录显示
+    if (e.altKey && e.key === 't') {
+      const tocBtn = document.querySelector('.toc-toggle-btn');
+      if (tocBtn) tocBtn.click();
+    }
+  });
 }); 
