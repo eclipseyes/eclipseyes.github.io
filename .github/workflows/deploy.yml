@@ -12,8 +12,11 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      # 直接进行构建和部署，跳过 npm 相关步骤
+      # 直接进行构建和部署
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: .  # 或者你的构建输出目录
+          token: ${{ secrets.DEPLOY_TOKEN }}  # 使用你的个人访问令牌
+          branch: gh-pages
+          clean: true
