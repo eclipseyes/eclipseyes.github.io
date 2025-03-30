@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eclipseyes - 个人网站</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 在body开头添加背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/firefly-lying-in-the-water-honkai-star-rail-moewalls-com.mp4" type="video/mp4">
+      <!-- 如果需要更好的浏览器兼容性，可以添加不同格式 -->
+      <!-- <source src="wallpaper/background.webm" type="video/webm"> -->
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
+  <!-- 在body开头添加背景音乐 -->
+  <audio id="bgMusic" loop preload="auto" controlsList="nodownload">
+    <source src="music/05-VEED(low).mp3" type="audio/mpeg">
+    <!-- 提供备用格式可能有助于兼容性 -->
+    <source src="music/05-VEED(low).ogg" type="audio/ogg">
+    您的浏览器不支持音频元素。
+  </audio>
+
+
+  <!-- 动态生成星星 -->
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <!-- 添加流星容器 -->
+  <div class="meteor-container">
+    <div class="meteor meteor-1"></div>
+    <div class="meteor meteor-2"></div>
+    <div class="meteor meteor-3"></div>
+    <div class="meteor meteor-4"></div>
+    <div class="meteor meteor-5"></div>
+    <div class="meteor meteor-6"></div>
+  </div>
+
+  <header>
+    <div class="container">
+      <!-- 添加音乐控制到Logo左边 -->
+      <div class="nav-music-control">
+        <button id="navMusicToggle" class="nav-music-btn">
+          <i class="fas fa-music"></i>
+        </button>
+      </div>
+
+      <h1 class="logo">
+        <img src="logo/preview.png" alt="Eclipseyes" class="logo-image">
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
+          <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
+          <li><a href="about.html" data-lang-key="about">关于我</a></li>
+        </ul>
+        <div class="language-switch">
+          <button id="zh-btn" class="lang-btn active">中</button>
+          <button id="en-btn" class="lang-btn">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2 data-lang-key="welcome" class="en-title">欢迎来到我的空间</h2>
+      <p data-lang-key="intro">在这里，我分享我的项目、研究和学习经验</p>
+      <a href="about.html" class="btn" data-lang-key="learn-more">了解更多</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="feature-box">
+        <svg class="mdi" width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3ZM18.82 9L12 12.72L5.18 9L12 5.28L18.82 9ZM17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z"
+            fill="#A8D8EA" />
+        </svg>
+        <h3 data-lang-key="machine-learning">机器学习</h3>
+        <p data-lang-key="ml-desc">探索人工智能和机器学习的前沿技术</p>
+      </div>
+      <div class="feature-box">
+        <svg class="mdi" width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20 2H4C2.89 2 2 2.89 2 4V16C2 17.11 2.89 18 4 18H8V21C8 21.55 8.45 22 9 22H9.5C9.75 22 10 21.9 10.2 21.71L13.9 18H20C21.11 18 22 17.11 22 16V4C22 2.89 21.11 2 20 2ZM9.08 15H7V12.91L13.17 6.72L15.24 8.8L9.08 15ZM16.84 7.2L15.83 8.21L13.76 6.18L14.77 5.16C14.97 4.95 15.31 4.94 15.55 5.16L16.84 6.41C17.05 6.62 17.06 6.96 16.84 7.2Z"
+            fill="#FF9A8B" />
+        </svg>
+        <h3 data-lang-key="llm">大语言模型</h3>
+        <p data-lang-key="llm-desc">研究和应用大型语言模型的最新进展</p>
+      </div>
+      <div class="feature-box">
+        <svg class="mdi" width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 3C7.58 3 4 4.79 4 7V17C4 19.21 7.59 21 12 21C16.41 21 20 19.21 20 17V7C20 4.79 16.42 3 12 3ZM18 17C18 17.5 15.87 19 12 19C8.13 19 6 17.5 6 17V14.77C7.61 15.55 9.72 16 12 16C14.28 16 16.39 15.55 18 14.77V17ZM18 12.45C16.7 13.4 14.42 14 12 14C9.58 14 7.3 13.4 6 12.45V9.64C7.47 10.47 9.61 11 12 11C14.39 11 16.53 10.47 18 9.64V12.45ZM12 9C8.13 9 6 7.5 6 7C6 6.5 8.13 5 12 5C15.87 5 18 6.5 18 7C18 7.5 15.87 9 12 9Z"
+            fill="#FCBAD3" />
+        </svg>
+        <h3 data-lang-key="data-analysis">数据分析</h3>
+        <p data-lang-key="data-desc">使用数据科学方法解决复杂问题</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="recent-projects">
+    <div class="container">
+      <h2 data-lang-key="recent-projects">最新项目</h2>
+      <div class="projects-grid">
+        <div class="empty-projects">
+          <i class="far fa-smile"></i>
+          <p data-lang-key="empty-notice">QwQ 等待上新哦~</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 data-lang-key="about">关于</h3>
+          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学习～</p>
+        </div>
+        <div class="footer-section">
+          <h3 data-lang-key="quick-links">快速链接</h3>
+          <ul>
+            <li><a href="index.html" data-lang-key="home">首页</a></li>
+            <li><a href="about.html" data-lang-key="about">关于我</a></li>
+            <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+            <li><a href="contact.html" data-lang-key="contact">联系我</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3 data-lang-key="contact">留言板</h3>
+          <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
+          <div class="social-icons">
+            <a href="https://github.com/eclipseyes" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <!-- 添加语言切换功能 -->
+  <script src="js/language.js"></script>
+</body>
+
+</html>

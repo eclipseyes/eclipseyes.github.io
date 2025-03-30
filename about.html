@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我 - Eclipseyes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 在body开头添加背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/firefly-lying-in-the-water-honkai-star-rail-moewalls-com.mp4" type="video/mp4">
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
+  <!-- 在body开头添加背景音乐 -->
+  <audio id="bgMusic" loop preload="auto" controlsList="nodownload">
+    <source src="music/05-VEED(low).mp3" type="audio/mpeg">
+    <!-- 提供备用格式可能有助于兼容性 -->
+    <source src="music/05-VEED(low).ogg" type="audio/ogg">
+    您的浏览器不支持音频元素。
+  </audio>
+
+  <!-- 太空元素 - 移除星球 -->
+  <!-- <div class="planet one"></div> -->
+  <!-- <div class="planet two"></div> -->
+  <div class="moon"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <header>
+    <div class="container">
+      <!-- 添加音乐控制到Logo左边 -->
+      <div class="nav-music-control">
+        <button id="navMusicToggle" class="nav-music-btn">
+          <i class="fas fa-music"></i>
+        </button>
+      </div>
+
+      <h1 class="logo">
+        <img src="logo/preview.png" alt="Eclipseyes" class="logo-image">
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
+          <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
+          <li><a href="about.html" class="active" data-lang-key="about">关于我</a></li>
+        </ul>
+        <div class="language-switch">
+          <button id="zh-btn" class="lang-btn active">中</button>
+          <button id="en-btn" class="lang-btn">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h2 data-lang-key="about" class="en-title">关于我</h2>
+    </div>
+  </section>
+
+  <section class="about-content">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="profile/b_43f1292ccd9b41beb5a59c3ee8ed8d61.jpg" alt="邱月的头像" class="avatar">
+        </div>
+        <div class="about-text">
+          <h3 data-lang-key="intro">简介</h3>
+          <p data-lang-key="bio">我是邱月，昵称
+            eclipseyes ～，现在在华中科技大学计算机学院读本科。正在学习和研究NLP相关～
+          </p>
+
+          <p>
+            <i class="fas fa-envelope"></i> <span data-lang-key="email-contact">邮箱联系:</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="mailto:eclipsefadingmoon@gmail.com">eclipsefadingmoon@gmail.com</a>
+          </p>
+
+          <div class="about-section">
+            <h3 data-lang-key="education">教育背景</h3>
+            <div class="education-timeline">
+              <div class="education-item">
+                <div class="education-school" data-lang-key="hust">华中科技大学</div>
+                <div class="education-title"><span data-lang-key="cs-major">计算机科学与技术专业</span> <span
+                    data-lang-key="undergraduate">本科在读</span></div>
+              </div>
+
+              <div class="education-item">
+                <div class="education-school" data-lang-key="nankai">重庆南开中学</div>
+                <div class="education-title" data-lang-key="high-school">高中</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-section">
+            <h3 data-lang-key="skills">技能专长</h3>
+            <div class="skills-container">
+              <div class="skill-bar">
+                <span class="skill-label" data-lang-key="machine-learning-skill">机器学习</span>
+                <div class="skill-progress">
+                  <div class="skill-fill" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label" data-lang-key="python-skill">Python</span>
+                <div class="skill-progress">
+                  <div class="skill-fill" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label" data-lang-key="deep-learning-skill">深度学习</span>
+                <div class="skill-progress">
+                  <div class="skill-fill" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-bar">
+                <span class="skill-label" data-lang-key="data-analysis-skill">数据分析</span>
+                <div class="skill-progress">
+                  <div class="skill-fill" style="width: 85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-section">
+            <h3 data-lang-key="research-interests">研究兴趣</h3>
+            <ul class="interest-list">
+              <li data-lang-key="nlp">自然语言处理</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 data-lang-key="about">关于</h3>
+          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学习～</p>
+        </div>
+        <div class="footer-section">
+          <h3 data-lang-key="quick-links">快速链接</h3>
+          <ul>
+            <li><a href="index.html" data-lang-key="home">首页</a></li>
+            <li><a href="about.html" data-lang-key="about">关于我</a></li>
+            <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+            <li><a href="contact.html" data-lang-key="contact">联系我</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3 data-lang-key="contact">留言板</h3>
+          <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
+          <div class="social-icons">
+            <a href="https://github.com/eclipseyes" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
+</body>
+
+</html>

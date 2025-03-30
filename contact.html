@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言板 - Eclipseyes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* 留言板样式 */
+    .guestbook-section {
+      padding: 60px 0;
+    }
+
+    .guestbook-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .guestbook-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .comment-form,
+    .comments-list {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment-form h3,
+    .comments-list h3 {
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--light-text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(163, 191, 250, 0.3);
+      border-radius: 5px;
+      color: var(--light-text);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .comment-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(163, 191, 250, 0.2);
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .comment-author {
+      font-weight: bold;
+      color: var(--secondary);
+    }
+
+    .comment-date {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .comment-content {
+      line-height: 1.6;
+      color: var(--light-text);
+      white-space: pre-wrap;
+    }
+
+    .no-comments {
+      text-align: center;
+      padding: 30px;
+      color: rgba(255, 255, 255, 0.6);
+      font-style: italic;
+    }
+
+    /* 管理员入口 - 隐藏在页面底部 */
+    .admin-link {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      opacity: 0.2;
+      transition: opacity 0.3s;
+    }
+
+    .admin-link:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/firefly-lying-in-the-water-honkai-star-rail-moewalls-com.mp4" type="video/mp4">
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
+  <!-- 在body开头添加背景音乐 -->
+  <audio id="bgMusic" loop preload="auto" controlsList="nodownload">
+    <source src="music/05-VEED(low).mp3" type="audio/mpeg">
+    <!-- 提供备用格式可能有助于兼容性 -->
+    <source src="music/05-VEED(low).ogg" type="audio/ogg">
+    您的浏览器不支持音频元素。
+  </audio>
+
+  <!-- 太空元素 -->
+  <!-- <div class="planet one"></div>
+  <div class="planet two"></div> -->
+  <div class="moon"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <header>
+    <div class="container">
+      <!-- 添加音乐控制到Logo左边 -->
+      <div class="nav-music-control">
+        <button id="navMusicToggle" class="nav-music-btn">
+          <i class="fas fa-music"></i>
+        </button>
+      </div>
+
+      <h1 class="logo">
+        <img src="logo/preview.png" alt="Eclipseyes" class="logo-image">
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
+          <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
+          <li><a href="about.html" class="active" data-lang-key="about">关于我</a></li>
+        </ul>
+        <div class="language-switch">
+          <button id="zh-btn" class="lang-btn active">中</button>
+          <button id="en-btn" class="lang-btn">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h2 data-lang-key="guestbook" class="en-title">留言板</h2>
+    </div>
+  </section>
+
+  <section class="guestbook-section">
+    <div class="container">
+      <div class="guestbook-container">
+        <!-- 留言表单 -->
+        <div class="comment-form">
+          <h3 data-lang-key="leave-message">留下您的留言</h3>
+          <form id="commentForm">
+            <div class="form-group">
+              <label for="name" data-lang-key="nickname">昵称</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email" data-lang-key="email-private">邮箱 (不会公开)</label>
+              <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="message" data-lang-key="message-content">留言内容</label>
+              <textarea id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn" data-lang-key="post-comment">发布留言</button>
+          </form>
+        </div>
+
+        <!-- 留言列表 -->
+        <div class="comments-list">
+          <h3 data-lang-key="all-comments">所有留言</h3>
+          <div id="commentsContainer">
+            <!-- 留言将通过JS动态添加 -->
+            <div class="no-comments" data-lang-key="no-comments">暂无留言，快来发表第一条留言吧！</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 隐藏的管理员入口 -->
+  <a href="admin.html" class="admin-link" title="管理员入口">
+    <i class="fas fa-cog"></i>
+  </a>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 data-lang-key="about">关于</h3>
+          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学习～</p>
+        </div>
+        <div class="footer-section">
+          <h3 data-lang-key="quick-links">快速链接</h3>
+          <ul>
+            <li><a href="index.html" data-lang-key="home">首页</a></li>
+            <li><a href="about.html" data-lang-key="about">关于我</a></li>
+            <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+            <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3 data-lang-key="contact">留言板</h3>
+          <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
+
+  <!-- 留言板功能脚本 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const commentForm = document.getElementById('commentForm');
+      const commentsContainer = document.getElementById('commentsContainer');
+
+      // 从本地存储加载评论
+      function loadComments() {
+        const comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+        // 按时间从新到旧排序
+        comments.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        // 清空容器
+        commentsContainer.innerHTML = '';
+
+        if (comments.length === 0) {
+          commentsContainer.innerHTML = '<div class="no-comments" data-lang-key="no-comments">暂无留言，快来发表第一条留言吧！</div>';
+
+          // 检查当前语言并立即应用翻译
+          const currentLang = localStorage.getItem('language') || 'zh';
+          if (currentLang === 'en') {
+            const noCommentsElement = commentsContainer.querySelector('[data-lang-key="no-comments"]');
+            if (noCommentsElement) {
+              noCommentsElement.textContent = 'No comments yet. Be the first to leave a message!';
+            }
+          }
+          return;
+        }
+
+        // 添加评论到页面
+        comments.forEach(comment => {
+          const commentElement = document.createElement('div');
+          commentElement.className = 'comment-item';
+
+          // 格式化日期
+          const date = new Date(comment.date);
+          const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+
+          commentElement.innerHTML = `
+            <div class="comment-header">
+              <span class="comment-author">${comment.name}</span>
+              <span class="comment-date">${formattedDate}</span>
+            </div>
+            <div class="comment-content">${comment.message}</div>
+          `;
+
+          commentsContainer.appendChild(commentElement);
+        });
+      }
+
+      // 处理评论提交
+      commentForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !email || !message) {
+          alert('请填写所有必填字段');
+          return;
+        }
+
+        // 创建新评论对象
+        const newComment = {
+          name,
+          email,
+          message,
+          date: new Date().toISOString()
+        };
+
+        // 保存到本地存储
+        const comments = JSON.parse(localStorage.getItem('comments')) || [];
+        comments.push(newComment);
+        localStorage.setItem('comments', JSON.stringify(comments));
+
+        // 重新加载评论列表
+        loadComments();
+
+        // 清空表单
+        commentForm.reset();
+
+        // 显示成功消息
+        alert('留言发布成功！');
+      });
+
+      // 初始加载评论
+      loadComments();
+    });
+  </script>
+</body>
+
+</html>

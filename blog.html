@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客 - Eclipseyes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.1.0/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <style>
+    /* 博客页面特定样式 */
+    .blog-container {
+      padding: 80px 0;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+
+    .blog-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .blog-post {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .blog-post img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .blog-post-content {
+      padding: 30px;
+    }
+
+    .blog-post-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .blog-post-meta span {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .blog-post-meta i {
+      margin-right: 5px;
+    }
+
+    .blog-post h3 {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .blog-post p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .blog-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .sidebar-section {
+      background-color: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar-section h3 {
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .recent-posts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .recent-post-item {
+      display: flex;
+      gap: 15px;
+    }
+
+    .recent-post-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .recent-post-info h4 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .recent-post-info span {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .categories-list li {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .categories-list li:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .categories-list a {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .categories-list span {
+      background-color: #f0f0f0;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+    }
+
+    .tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tags-list a {
+      background-color: #f0f0f0;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: #555;
+      transition: background-color 0.3s;
+    }
+
+    .tags-list a:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/firefly-lying-in-the-water-honkai-star-rail-moewalls-com.mp4" type="video/mp4">
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
+  <!-- 在body开头添加背景音乐 -->
+  <audio id="bgMusic" loop preload="auto" controlsList="nodownload">
+    <source src="music/05-VEED(low).mp3" type="audio/mpeg">
+    <!-- 提供备用格式可能有助于兼容性 -->
+    <source src="music/05-VEED(low).ogg" type="audio/ogg">
+    您的浏览器不支持音频元素。
+  </audio>
+
+  <!-- 太空元素 -->
+  <div class="moon"></div>
+  <div class="comet"></div>
+  <div class="comet"></div>
+
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <header>
+    <div class="container">
+      <div class="nav-music-control">
+        <button id="navMusicToggle" class="nav-music-btn">
+          <i class="fas fa-music"></i>
+        </button>
+      </div>
+      <h1 class="logo">
+        <img src="logo/preview.png" alt="Eclipseyes" class="logo-image">
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog" class="active">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
+          <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
+          <li><a href="about.html" data-lang-key="about">关于我</a></li>
+        </ul>
+        <div class="language-switch">
+          <button id="zh-btn" class="lang-btn active">中</button>
+          <button id="en-btn" class="lang-btn">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h2 data-lang-key="blog">学习分享</h2>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-posts-container">
+        <div id="blogList" class="blog-list">
+          <div class="loading">加载中...</div>
+        </div>
+      </div>
+
+      <div id="blogPost" class="blog-post">
+        <!-- 这里会通过JS动态加载博客内容 -->
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 data-lang-key="about">关于</h3>
+          <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学习～</p>
+        </div>
+        <div class="footer-section">
+          <h3 data-lang-key="quick-links">快速链接</h3>
+          <ul>
+            <li><a href="index.html" data-lang-key="home">首页</a></li>
+            <li><a href="about.html" data-lang-key="about">关于我</a></li>
+            <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+            <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3 data-lang-key="contact">留言板</h3>
+          <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/aisettings.js"></script>
+  <script src="js/debug.js"></script>
+  <script src="js/blog-toc.js"></script>
+  <script src="js/blog-manager.js"></script>
+  <script>
+    // 确保目录功能在页面完全加载后初始化
+    window.addEventListener('load', function () {
+      // 如果是文章页面，确保目录生成
+      if (window.location.hash.startsWith('#post/') && window.BlogTOC) {
+        setTimeout(function () {
+          window.BlogTOC.generate();
+        }, 1000);
+      }
+
+      // 监听内容变化，确保在动态加载内容后更新目录
+      const contentObserver = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.type === 'childList' &&
+            window.location.hash.startsWith('#post/') &&
+            window.BlogTOC) {
+            setTimeout(function () {
+              window.BlogTOC.generate();
+            }, 500);
+          }
+        });
+      });
+
+      // 观察文章容器的变化
+      const blogPost = document.getElementById('blogPost');
+      if (blogPost) {
+        contentObserver.observe(blogPost, { childList: true, subtree: true });
+      }
+    });
+  </script>
+</body>
+
+</html>

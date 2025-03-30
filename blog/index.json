@@ -1,0 +1,15 @@
+[
+  {
+    "id": "prompt-engineering",
+    "title": "LLM技巧总结 | Prompt Engineering指南",
+    "date": "2025-3-18",
+    "summary": "本篇全面介绍在不同场景下LLM的各种Prompt Engineering技巧，每个都附有论文链接和架构图，方便快速检阅和使用。",
+    "tags": [
+      "AI",
+      "Prompt Engineering",
+      "大语言模型",
+      "LLM"
+    ],
+    "coverImage": "blog/images/prompt-engineering-20250225163139.png"
+  }
+]

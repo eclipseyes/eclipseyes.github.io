@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人活动 - Eclipseyes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 在body开头添加背景视频 -->
+  <div class="video-background">
+    <video autoplay muted loop id="bgVideo">
+      <source src="wallpaper/firefly-lying-in-the-water-honkai-star-rail-moewalls-com.mp4" type="video/mp4">
+      您的浏览器不支持背景视频。
+    </video>
+  </div>
+
+  <!-- 在body开头添加背景音乐 -->
+  <audio id="bgMusic" loop preload="auto" controlsList="nodownload">
+    <source src="music/05-VEED(low).mp3" type="audio/mpeg">
+    <!-- 提供备用格式可能有助于兼容性 -->
+    <source src="music/05-VEED(low).ogg" type="audio/ogg">
+    您的浏览器不支持音频元素。
+  </audio>
+
+  <!-- 太空元素 -->
+  <!-- <div class="planet one"></div>
+  <div class="planet two"></div> -->
+  <div class="moon"></div>
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+
+  <header>
+    <div class="container">
+      <!-- 添加音乐控制到Logo左边 -->
+      <div class="nav-music-control">
+        <button id="navMusicToggle" class="nav-music-btn">
+          <i class="fas fa-music"></i>
+        </button>
+      </div>
+
+      <h1 class="logo">
+        <img src="logo/preview.png" alt="Eclipseyes" class="logo-image">
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-lang-key="home">首页</a></li>
+          <li><a href="projects.html" data-lang-key="projects">项目展示</a></li>
+          <li><a href="blog.html" data-lang-key="blog">学习分享</a></li>
+          <li><a href="research.html" data-lang-key="research">研究成果</a></li>
+          <li><a href="contact.html" data-lang-key="contact">留言板</a></li>
+          <li><a href="activities.html" data-lang-key="activities">个人活动</a></li>
+          <li><a href="about.html" class="active" data-lang-key="about">关于我</a></li>
+        </ul>
+        <div class="language-switch">
+          <button id="zh-btn" class="lang-btn active">中</button>
+          <button id="en-btn" class="lang-btn">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 密码保护模态框 - 添加左上角红色关闭按钮 -->
+  <div id="passwordModal" class="password-modal">
+    <div class="password-container">
+      <button id="closePasswordModal" class="close-btn">&times;</button>
+      <h2 data-lang-key="password-title">这是一个受密码保护的页面</h2>
+      <input type="password" id="password" data-lang-key-placeholder="password-placeholder" placeholder="请输入密码">
+      <button id="submitPassword" data-lang-key="submit">提交</button>
+      <p id="errorMessage" style="color: #FF9A8B; display: none;" data-lang-key="password-error">密码错误，请重试</p>
+    </div>
+  </div>
+
+  <!-- 隐藏内容区域 -->
+  <div id="hiddenContent" class="hidden-content">
+    <section class="page-header">
+      <div class="container">
+        <h2 data-lang-key="activities">个人活动</h2>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="activities-grid">
+        <div class="activity-card">
+          <h3 data-lang-key="douban-activity">豆瓣活动</h3>
+          <div class="douban-timeline" id="doubanTimeline">
+            <!-- 移除豆瓣内容 -->
+            <div class="empty-projects">
+              <i class="far fa-smile"></i>
+              <p data-lang-key="empty-notice">QwQ 等待上新哦~</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <h3>Huggingface</h3>
+          <div class="huggingface-container">
+            <!-- 移除huggingface内容 -->
+            <div class="empty-projects">
+              <i class="far fa-smile"></i>
+              <p data-lang-key="empty-notice">QwQ 等待上新哦~</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <h3 data-lang-key="edx-courses">EDX课程</h3>
+          <div class="edx-courses">
+            <!-- 移除EDX课程内容 -->
+            <div class="empty-projects">
+              <i class="far fa-smile"></i>
+              <p data-lang-key="empty-notice">QwQ 等待上新哦~</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <h3 data-lang-key="other-activities">其他活动</h3>
+          <div class="other-timeline" id="otherTimeline">
+            <!-- 内容省略 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 data-lang-key="about">关于</h3>
+            <p data-lang-key="about-desc">我是邱月，华中科技大学计算机学院学习～</p>
+          </div>
+          <div class="footer-section">
+            <h3 data-lang-key="quick-links">快速链接</h3>
+            <ul>
+              <li><a href="index.html" data-lang-key="home">首页</a></li>
+              <li><a href="about.html" data-lang-key="about">关于我</a></li>
+              <li><a href="projects.html" data-lang-key="projects">项目</a></li>
+              <li><a href="contact.html" data-lang-key="contact">联系我</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 data-lang-key="contact">留言板</h3>
+            <p><i class="fas fa-envelope"></i> eclipsefadingmoon@gmail.com</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Eclipseyes. <span data-lang-key="rights">保留所有权利</span>.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/language.js"></script>
+  <script>
+    // 密码验证
+    document.addEventListener('DOMContentLoaded', function () {
+      const correctPassword = "qiuyue";
+      const passwordModal = document.getElementById('passwordModal');
+      const hiddenContent = document.getElementById('hiddenContent');
+      const submitBtn = document.getElementById('submitPassword');
+      const passwordInput = document.getElementById('password');
+      const errorMessage = document.getElementById('errorMessage');
+      const closeBtn = document.getElementById('closePasswordModal');
+
+      // 检查是否已经验证过密码
+      const isAuthenticated = sessionStorage.getItem('authenticated') === 'true';
+      if (isAuthenticated) {
+        passwordModal.style.display = 'none';
+        hiddenContent.style.display = 'block';
+      } else {
+        // 确保内容隐藏
+        hiddenContent.style.display = 'none';
+        passwordModal.style.display = 'flex';
+      }
+
+      // 添加关闭按钮事件
+      closeBtn.addEventListener('click', function () {
+        // 关闭模态框并跳转回首页
+        window.location.href = 'index.html';
+      });
+
+      submitBtn.addEventListener('click', checkPassword);
+      passwordInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          checkPassword();
+        }
+      });
+
+      function checkPassword() {
+        if (passwordInput.value === correctPassword) {
+          // 密码正确
+          passwordModal.style.display = 'none';
+          hiddenContent.style.display = 'block';
+          // 保存验证状态到会话
+          sessionStorage.setItem('authenticated', 'true');
+
+          // 添加进入动画
+          const elements = document.querySelectorAll('.activity-card, .activity-item');
+          elements.forEach((element, index) => {
+            element.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`;
+            element.style.opacity = '0';
+          });
+        } else {
+          // 密码错误
+          errorMessage.style.display = 'block';
+          passwordInput.value = '';
+          // 添加抖动动画
+          passwordInput.classList.add('shake');
+          setTimeout(() => {
+            passwordInput.classList.remove('shake');
+          }, 500);
+        }
+      }
+    });
+
+    // 当语言切换时处理特殊内容的翻译
+    document.addEventListener('DOMContentLoaded', function () {
+      // 监听语言切换
+      document.getElementById('en-btn').addEventListener('click', function () {
+        // 如果活动卡片存在，更新其内容为英文
+        // activityTitles[0].textContent = 'Activity Title in English';
+
+        // 更新活动内容为英文
+        const activityContent = document.querySelectorAll('.activity-content p');
+        // 根据需要翻译每个段落
+      });
+
+      // 切换回中文
+      document.getElementById('zh-btn').addEventListener('click', function () {
+        // 恢复中文内容
+      });
+    });
+
+    // 在页面加载完成后执行初始化和事件绑定
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // 处理placeholder翻译
+      function applyPlaceholderTranslations(lang) {
+        // 首先获取language.js中定义的translations对象
+        // 这里假设window.translations是全局可用的
+        const translations = window.translations || {};
+
+        document.querySelectorAll('[data-lang-key-placeholder]').forEach(element => {
+          const key = element.getAttribute('data-lang-key-placeholder');
+          if (translations[key] && translations[key][lang]) {
+            element.placeholder = translations[key][lang];
+          }
+        });
+      }
+
+      // 创建一个函数来检查和应用translations
+      function initPlaceholderTranslations() {
+        const currentLang = localStorage.getItem('language') || 'zh';
+
+        // 直接从language.js中访问translations
+        if (typeof translations !== 'undefined') {
+          applyPlaceholderTranslations(currentLang);
+        } else {
+          // 如果translations对象不可用，则等待一段时间后再试
+          setTimeout(function () {
+            initPlaceholderTranslations();
+          }, 100);
+        }
+      }
+
+      // 初始应用
+      initPlaceholderTranslations();
+
+      // 监听语言切换事件
+      document.getElementById('en-btn').addEventListener('click', function () {
+        setTimeout(function () {
+          applyPlaceholderTranslations('en');
+        }, 10);
+      });
+
+      document.getElementById('zh-btn').addEventListener('click', function () {
+        setTimeout(function () {
+          applyPlaceholderTranslations('zh');
+        }, 10);
+      });
+    });
+  </script>
+</body>
+
+</html>

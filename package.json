@@ -1,0 +1,29 @@
+{
+  "name": "eclipseyes-blog",
+  "version": "1.0.0",
+  "description": "Eclipseyes 个人博客",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build step required\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eclipseyes/eclipseyes.github.io.git"
+  },
+  "keywords": [
+    "blog",
+    "personal-website"
+  ],
+  "author": "Eclipseyes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eclipseyes/eclipseyes.github.io/issues"
+  },
+  "homepage": "https://github.com/eclipseyes/eclipseyes.github.io#readme",
+  "dependencies": {
+    "marked": "^4.3.0",
+    "highlight.js": "^11.7.0",
+    "lodash": "^4.17.21"
+  }
+} 
